@@ -77,7 +77,7 @@ namespace SISSE_GUI
                 			if(!ler.IsDBNull(0))u.Descricao_Do_Tipo_De_Evento = ler.GetString(0);else u.Descricao_Do_Tipo_De_Evento = "Não Apresenta";
                 			if(!ler.IsDBNull(1))u.Descricao_Do_Evento = ler.GetString(1);else u.Descricao_Do_Evento = "Não Apresenta";
                 			if(!ler.IsDBNull(2))u.Argumento = ler.GetString(2);else u.Argumento = "";
-                			if(!ler.IsDBNull(3))u.Message_De_Erro = ler.GetString(3);else u.Message_De_Erro = "Não Apresenta";
+                			if(!ler.IsDBNull(3))u.Message_De_Erro = "Apresenta";else u.Message_De_Erro = "Não Apresenta";
                 			if(!ler.IsDBNull(4))u.Stack_Trace = ler.GetString(4);else u.Stack_Trace = "Não Apresenta";
                 			if(!ler.IsDBNull(5))u.Codigo_Proposta_SISSER = ler.GetInt32(5);else u.Codigo_Proposta_SISSER = 0;
                 			if(!ler.IsDBNull(6))u.dt_rgs_insercao = ler.GetDateTime(6).ToString();else u.dt_rgs_insercao = "Não Apresenta";

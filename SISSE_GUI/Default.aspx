@@ -78,12 +78,15 @@
                	 		<asp:boundfield  datafield="Descricao_Do_Evento" ItemStyle-Wrap="true"
                 			headertext="Descrição do Evendo"/>
                 			
-                		<asp:TemplateField HeaderText="Message de Erro" >
-                    	<ItemTemplate>
-                			<asp:Button id="msgErro" Text="Download" CommandArgument='<%# Eval("Message_De_Erro") %>' class="button"  CommandName="downErro" runat="server" />
                 	
-                		</ItemTemplate>
-                		</asp:TemplateField>
+						<asp:TemplateField HeaderText="Messagem de Erro" >
+                    		<ItemTemplate>
+                    			
+                    			<asp:Label id="lblErro" Text='<%# Eval("Message_De_Erro") %>' runat="server" />
+                    			
+                    		</ItemTemplate>
+                		</asp:TemplateField>                			
+                		
                 		<asp:TemplateField HeaderText="Stack Trace" >
                     		<ItemTemplate>
                     			
@@ -91,6 +94,7 @@
                     			
                     		</ItemTemplate>
                 		</asp:TemplateField>
+                		
                 		<asp:TemplateField HeaderText="Dados Enviados" >
                     		<ItemTemplate>
                     			

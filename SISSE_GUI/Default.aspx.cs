@@ -35,9 +35,10 @@ namespace SISSE_GUI
 		protected	Button		submit,Autorizar;
 		protected	TextBox		nrProposta;
 		protected  GridView 	GridView1,GridView2;
-		protected Label CdPropostaSISSER,information;
+		protected Label CdPropostaSISSER,information,lblErro;
 		protected List<ObjectEventLog> coll;
 		protected Facade f = Facade.Instance;
+		
 		
 		public int idApoliceSession 
 		{ get{
@@ -99,9 +100,22 @@ namespace SISSE_GUI
 		 		GridViewRowCollection rc2 = GridView2.Rows;
 		 		List<Color> cores = SortearCores(rc.Count);
 		 		
+		 		
 		 		for(int i=0; i<rc.Count;i++){
 		 		
 		 			rc[i].Cells[0].BackColor = cores[i];
+		 			
+		 			
+		 			if((lblErro = (Label) rc[i].Cells[4].FindControl("lblErro")).Text.Equals("Não Apresenta")){
+		 			
+		 				lblErro.ForeColor = Color.Green; 
+		 			
+		 			}
+		 			else{ 
+		 				
+		 				lblErro.ForeColor = Color.Red; 
+		 				
+		 			}
 		 			//rc2[i].Cells[0].BackColor = rc[i].Cells[0].BackColor;
 		 			
 		 		 			
