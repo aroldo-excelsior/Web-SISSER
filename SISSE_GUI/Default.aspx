@@ -23,8 +23,6 @@
         	}
      	</script>
      	
-     	
-		
 
 		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
 		<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
@@ -34,6 +32,11 @@
 		
 	</head>
 	<body>
+	<div class="geral">
+	
+	
+	
+	
 		<form id="Form1" method="post" runat="server">
 			<img src="res\\excelsior.jpg" width="205" height="70">
 			<H2 ALIGN="center" class="h2"><FONT FACE="Cambria" SIZE="7">SISSER</FONT></H2>
@@ -136,10 +139,13 @@
            			</Columns>
    				</asp:GridView>
    			</div>
-   			
-   			
+   		</div>
+   		<div class="footer">
+			<h5 ALIGN="Right"><footer > Version 1.0.3 - 2016 by Cia Excelsior de Seguros Development Team.</footer></h5>
+		</div>
    			
 		</form>
 		<a name="an"></a>
+		
 	</body>
 </html>
