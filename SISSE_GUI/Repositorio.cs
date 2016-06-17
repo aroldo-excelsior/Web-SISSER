@@ -38,7 +38,6 @@ namespace SISSE_GUI
 		
 		public List<ObjectEventLog> ResgatarEventLogs(string nrProposta) {
         	List<ObjectEventLog> coll = new List<ObjectEventLog>();
-        	//string connString = @"Data Source=EXCRECSRV01\BI;Initial Catalog=SISSER ;User Id=SISSERCoreUserDB ;Password=Excelsior123!;";
         	int contador = 1;
         	if(nrProposta != null){
         		string connString = ConfigurationManager.ConnectionStrings["SISSER_CON"].ConnectionString;        

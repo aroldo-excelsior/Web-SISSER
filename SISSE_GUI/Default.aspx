@@ -114,34 +114,10 @@
 				</asp:GridView>
 			</div>
 			</br>
-			<div id="grid2" align="center">
-				
-				<asp:GridView 
-    				ID="GridView2" 
-    				AutoGenerateColumns="False"
-    				OnRowCommand="GridView1_RowCommand"
-    				CssClass="mydatagrid" 
-    				PagerStyle-CssClass="pager"
-    				HeaderStyle-CssClass="header"
-    				RowStyle-CssClass="rows"
-    				AllowPaging="True" 
-    				runat="server"
-   				>
-   			
-   					<Columns>	
-   					
-						<asp:boundfield  datafield="Sequencia" ItemStyle-Wrap="false" 
-                			headertext="Nº" />
-				
-						<asp:boundfield  datafield="Argumento"
-                			headertext="Dados Enviados" ItemStyle-Wrap="true"/>
-			                  
-           			</Columns>
-   				</asp:GridView>
-   			</div>
+			
    		</div>
    		<div class="footer">
-			<h5 ALIGN="Right"><footer > Version 1.0.3 - 2016 by Cia Excelsior de Seguros Development Team.</footer></h5>
+			<h5 ALIGN="Right"><footer > Version 1.0.4 - 2016 by Cia Excelsior de Seguros Development Team.</footer></h5>
 		</div>
    			
 		</form>
