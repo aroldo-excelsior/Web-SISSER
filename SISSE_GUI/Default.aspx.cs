@@ -34,7 +34,7 @@ namespace SISSE_GUI
 
 		protected	Button		submit,Autorizar;
 		protected	TextBox		nrProposta;
-		protected  GridView 	GridView1;
+		protected  GridView 	GridView1,GridView2;
 		protected Label CdPropostaSISSER,information,lblErro;
 		protected List<ObjectEventLog> coll;
 		protected Facade f = Facade.Instance;
@@ -90,13 +90,14 @@ namespace SISSE_GUI
 		 		
 		 	}else{
 		 		GridView1.DataSource = coll;
-		 	
+		 		//GridView2.DataSource = coll;
 		 		
 		 		GridView1.DataBind();
-		 		
+		 		//GridView2.DataBind();
 		 		
 		 		
 		 		GridViewRowCollection rc = GridView1.Rows;
+		 		GridViewRowCollection rc2 = GridView2.Rows;
 		 		List<Color> cores = SortearCores(rc.Count);
 		 		
 		 		
@@ -115,7 +116,7 @@ namespace SISSE_GUI
 		 				lblErro.ForeColor = Color.Red; 
 		 				
 		 			}
-		 			
+		 			//rc2[i].Cells[0].BackColor = rc[i].Cells[0].BackColor;
 		 			
 		 		 			
 		 		}
@@ -139,10 +140,17 @@ namespace SISSE_GUI
 		 
 		 	GridView1.DataSource = null;
 		 	GridView1.DataBind();
-		 	
+		 	GridView2.DataSource = null;
+		 	GridView2.DataBind();
 		 
 		 }
 		 
+		  private void LimparGrid2(){
+		 
+		 	GridView2.DataSource = null;
+		 	GridView2.DataBind();
+		 	
+		 }
 		 protected List<Color> SortearCores(int quantidade){
 		 
 		 	int r = 0;
@@ -187,7 +195,7 @@ namespace SISSE_GUI
 			information.Text = "";
 			nrProposta.BorderColor = Color.Blue;
 			CdPropostaSISSER.Text = "";
-			
+			LimparGrid2();
 		
 			if(nrProposta.Text != ""){
 		 		if(isNumber(nrProposta.Text))
@@ -248,6 +256,26 @@ namespace SISSE_GUI
                 Response.Flush();
                 Response.End();
 				
+				
+				
+				
+				//LimparGrid2();
+			
+				//int index = Convert.ToInt32(e.CommandArgument);
+				//index--;
+				
+				//nrProposta.Text = index.ToString();
+				
+				//List<ObjectEventLog> coll2 = new List<ObjectEventLog>();
+				//coll2.Add(Controle.Getinstance().ResgatarEventLogs(nrProposta.Text)[index]);
+				
+				//GridView2.DataSource = coll2;
+				//GridView2.DataBind();
+				
+				//GridViewRowCollection rc = GridView1.Rows;
+		 		//GridViewRowCollection rc2 = GridView2.Rows;
+				
+				//rc2[0].Cells[0].BackColor = rc[index].Cells[0].BackColor;
 				
 			}
 			if(e.CommandName == "downErro"){
@@ -316,6 +344,7 @@ namespace SISSE_GUI
 		
 		
 		
+		//----------------------------------------------------------------------
 		private void InitializeComponent()
 		{
 			this.Load	+= new System.EventHandler(Page_Load);
@@ -326,6 +355,7 @@ namespace SISSE_GUI
 			nrProposta.BorderColor = Color.Blue;
 			information.ForeColor = Color.Red;
 			
+			//NomeEmpresa.ForeColor = Color.Blue;
 			GridView1.RowCommand += new GridViewCommandEventHandler(GridView1_RowCommand);
 			
 		}
