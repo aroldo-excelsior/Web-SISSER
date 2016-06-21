@@ -68,15 +68,6 @@ namespace SISSE_GUI
 		
 			get{
 				
-				//string str = "";
-				
-				//string[] caracters = this._Args.Split('>');
-				
-				//for(int i =0; i<caracters.Length;i++){
-				
-					//str+=caracters[i]+"> ";
-				
-				//}
 				return _Args;}
 			set{this._Args = value;}
 		}
