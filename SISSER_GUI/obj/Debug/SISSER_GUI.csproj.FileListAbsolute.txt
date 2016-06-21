@@ -1,6 +1,0 @@
-C:\Users\Aroldo\Documents\SharpDevelop Projects\SISSER_GUI\SISSER_GUI\obj\Debug\SISSER_GUI.csprojResolveAssemblyReference.cache
-C:\Users\Aroldo\Documents\SharpDevelop Projects\SISSER_GUI\SISSER_GUI\bin\SISSER_GUI.dll
-C:\Users\Aroldo\Documents\SharpDevelop Projects\SISSER_GUI\SISSER_GUI\bin\SISSER_GUI.pdb
-C:\Users\Aroldo\Documents\SharpDevelop Projects\SISSER_GUI\SISSER_GUI\bin\SISSERCore.dll
-C:\Users\Aroldo\Documents\SharpDevelop Projects\SISSER_GUI\SISSER_GUI\obj\Debug\SISSER_GUI.dll
-C:\Users\Aroldo\Documents\SharpDevelop Projects\SISSER_GUI\SISSER_GUI\obj\Debug\SISSER_GUI.pdb
