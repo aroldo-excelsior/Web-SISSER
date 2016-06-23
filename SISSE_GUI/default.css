@@ -1,0 +1,77 @@
+
+	p, ol, ul
+	{
+		margin-top: 0;
+	}
+	
+	ol, ul
+	{
+		padding: 0;
+		list-style: none;
+	}
+	
+	p
+	{
+		line-height: 180%;
+	}
+	
+	
+	
+	a
+	{
+		color: #353535;
+	}
+	
+	a:hover
+	{
+		text-decoration: none;
+	}
+	
+
+	#menu
+	{
+		background: #ccc url(images/bg01.png) repeat;
+		border-bottom: 4px solid #191970;
+	}
+	
+	#menu ul
+	{
+		
+		margin: 0;
+		padding: 0px 0px 0px 0px;
+		list-style: none;
+		line-height: normal;
+		text-align: center;
+	}
+	
+	
+	
+	
+	
+	#menu a
+	{
+		display: inline;
+		padding: 11px 2em;
+		line-height: 40px;
+		line-weight: 50%;
+		letter-spacing: 1px;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-size: 16px;
+		font-weight: 700;
+		color: #191970;
+		width: 50%;
+	}
+	
+	#menu .current_page_item
+	{
+		background: #191970;
+		color: #FFF;
+	}
+	
+	#menu a:hover
+	{
+		text-decoration: none;
+		color: #FFF;
+	}
+

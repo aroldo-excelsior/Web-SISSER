@@ -1,6 +1,6 @@
-C:\Users\Aroldo\Documents\SharpDevelop Projects\SISSER_GUI\SISSER_GUI\bin\SISSE_GUI.dll
-C:\Users\Aroldo\Documents\SharpDevelop Projects\SISSER_GUI\SISSER_GUI\bin\SISSE_GUI.pdb
-C:\Users\Aroldo\Documents\SharpDevelop Projects\SISSER_GUI\SISSER_GUI\bin\SISSERCore.dll
-C:\Users\Aroldo\Documents\SharpDevelop Projects\SISSER_GUI\SISSER_GUI\obj\Debug\SISSE_GUI.csprojResolveAssemblyReference.cache
-C:\Users\Aroldo\Documents\SharpDevelop Projects\SISSER_GUI\SISSER_GUI\obj\Debug\SISSE_GUI.dll
-C:\Users\Aroldo\Documents\SharpDevelop Projects\SISSER_GUI\SISSER_GUI\obj\Debug\SISSE_GUI.pdb
+C:\Users\aroldo.andrade\Documents\SharpDevelop Projects\SISSE_GUI\SISSE_GUI\bin\SISSE_GUI.dll
+C:\Users\aroldo.andrade\Documents\SharpDevelop Projects\SISSE_GUI\SISSE_GUI\bin\SISSE_GUI.pdb
+C:\Users\aroldo.andrade\Documents\SharpDevelop Projects\SISSE_GUI\SISSE_GUI\obj\Debug\SISSE_GUI.csprojResolveAssemblyReference.cache
+C:\Users\aroldo.andrade\Documents\SharpDevelop Projects\SISSE_GUI\SISSE_GUI\obj\Debug\SISSE_GUI.dll
+C:\Users\aroldo.andrade\Documents\SharpDevelop Projects\SISSE_GUI\SISSE_GUI\obj\Debug\SISSE_GUI.pdb
+C:\Users\aroldo.andrade\Documents\SharpDevelop Projects\SISSE_GUI\SISSE_GUI\bin\SISSERCore.dll

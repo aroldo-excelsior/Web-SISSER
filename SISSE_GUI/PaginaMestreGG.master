@@ -1,0 +1,74 @@
+﻿<%@ Master Language="C#"
+	CodeBehind="PaginaMestreGG.cs"
+	Inherits="SISSE_GUI.PaginaMestreGG" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head >
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SISSE_GUI</title>
+		
+		<script type="text/javascript">
+        	function PermiteSomenteNumeros(event){
+            	var charCode = (event.which) ? event.which : event.keyCode
+            	if (charCode  >  31 && (charCode  <  48 || charCode  >  57))
+                	return false;
+            	return true;
+        	}
+     	</script>
+     	
+     	
+     	
+     	
+		
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+		<meta http-equiv="PRAGMA" content="NO-CACHE" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+
+		<link href="SISSE_GUI2.css" rel="stylesheet" type="text/css"/>
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900" rel="stylesheet" />
+		<link href="default.css" rel="stylesheet" type="text/css" media="all" />
+	    <link href="StyleSheet.css" rel="stylesheet" type="text/css" media="all" />
+		
+	</head>
+	<body background="res\background.jpg" runat="server" >
+		<form runat="server">
+        	<div id="geral" runat="server" >
+
+            	<div id="cabecalho" background="res\background.jpg">
+            	
+            	<img  src="res\\excelsior.jpg" class="alignleft" width="205" height="70">
+            	
+            	<h2  class="h2">
+            	 	<FONT FACE="Cambria" SIZE="7">SISSER</FONT>
+            	</h2>
+            	</div>
+				<div id="menu" runat="server" >
+					<ul id="nav"  >
+						<asp:LinkButton ID="li1" runat="server">Consultar Limite</asp:LinkButton>
+						<asp:LinkButton ID="li2" runat="server">Pesquisar Proposta</asp:LinkButton>						
+					</ul>
+				</div>
+            	
+
+            	<div id="conteudo" >
+
+              		<asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+					</asp:ContentPlaceHolder>
+
+           		</div>
+
+            	<div id="rodape">
+					
+               		<h5 ALIGN="Right"><footer > Version 1.0.5 - 2016 by Cia Excelsior de Seguros Development Team.&ensp;</footer></h5>
+
+            	</div>
+
+       		 </div>
+		</form>
+	</body>
+</html>

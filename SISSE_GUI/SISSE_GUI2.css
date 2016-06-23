@@ -8,8 +8,19 @@
 
 .h2
 {
+
+	margin-top: 15px;
+	margin-left: 45%;
     color: #191970;
-	text-shadow: 2px 2px 2px #cccccc, 2px 2px 2px #191970, 2px 2px 2px #cccccc
+	text-shadow: 2px 2px 2px #cccccc, 2px 2px 2px #191970, 2px 2px 2px #cccccc;
+	
+}
+
+
+.MenuItem
+{
+    color: #191970;
+	text-shadow: 2px 2px 2px #cccccc
 }
 
 .button 
@@ -65,6 +76,8 @@ html, body {height:98%;}
 	font-weight: bold;
 	text-align: left;
 }
+
+
 
 .mydatagrid a /** FOR THE PAGING ICONS  **/
 {

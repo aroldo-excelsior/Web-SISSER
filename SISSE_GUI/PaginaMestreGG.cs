@@ -1,8 +1,8 @@
 ﻿/*
  * Created by SharpDevelop.
  * User: aroldo.andrade
- * Date: 22/06/2016
- * Time: 14:17
+ * Date: 23/06/2016
+ * Time: 10:25
  * 
  * To change this template use Tools | Options | Coding | Edit Standard Headers.
  */
@@ -11,27 +11,31 @@ using System.Collections;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Runtime.Remoting.Messaging;
 using System.Web;
 using System.Web.SessionState;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
+using System.Windows.Forms;
+
 
 namespace SISSE_GUI
 {
 	/// <summary>
-	/// Description of Default
-	/// </summary>
-	public class Default : Page
+	/// Description of Master
+	/// </summary>	
+	/// 
+	
+	
+	
+	public partial class PaginaMestreGG: MasterPage
 	{	
-		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-		#region Data
-
-
-		#endregion
-		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-		#region Page Init & Exit (Open/Close DB connections here...)
-
+		
+		protected LinkButton li1,li2;
+		
+		
+		
 		protected void PageInit(object sender, System.EventArgs e)
 		{
 		}
@@ -39,32 +43,63 @@ namespace SISSE_GUI
 		protected void PageExit(object sender, System.EventArgs e)
 		{
 		}
+		
+		
+		
+		private void SetCSSMenu(){
+			
+			if(HttpContext.Current.Request.Url.ToString().Contains("Default")){
+			
+				li1.CssClass = "current_page_item";
+				
+			}else if(HttpContext.Current.Request.Url.ToString().Contains("PProposta")){
+				
+				li2.CssClass = "current_page_item";
+				
+			}
+			
+			
+		}
 
-		#endregion
-		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-		#region Page Load
+		
 		private void Page_Load(object sender, System.EventArgs e)
 		{
 			
-			//------------------------------------------------------------------
+			SetCSSMenu();
+			
 			if(IsPostBack)
 			{
+				
+				
+				
 			}
-			//------------------------------------------------------------------
+			
 		}
-		#endregion
-		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-		#region Click_Button_OK
+		
 
 		//----------------------------------------------------------------------
-		protected void Click_Button_Ok(object sender, System.EventArgs e)
+		protected void MyFuncion_Click(object sender, System.EventArgs e)
 		{
-		
+			//li1.CssClass = "current_page_item";
+			//li2.CssClass = "";
+			Response.Redirect("Default.aspx");
+			
+			
 		}
+		
+		protected void MyFuncion_Click2(object sender, System.EventArgs e)
+		{
+			
+			
+			Response.Redirect("PProposta.aspx");
+			
+			
+			
+		}
+		
+		
 
-		#endregion
-		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-		#region Change_Input_Name
+		
 
 		//----------------------------------------------------------------------
 		protected void Changed_Input_Name(object sender, System.EventArgs e)
@@ -72,13 +107,7 @@ namespace SISSE_GUI
 			
 		}
 
-		#endregion
-		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-		#region Add more events here...
-
-		#endregion
-		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
-		#region Initialize Component
+	
 
 		protected override void OnInit(EventArgs e)
 		{	InitializeComponent();
@@ -90,11 +119,12 @@ namespace SISSE_GUI
 			this.Load	+= new System.EventHandler(Page_Load);
 			this.Init   += new System.EventHandler(PageInit);
 			this.Unload += new System.EventHandler(PageExit);
+			this.li1.Click += new System.EventHandler(MyFuncion_Click);
+			this.li2.Click += new System.EventHandler(MyFuncion_Click2);
 			//------------------------------------------------------------------
 			
 			//------------------------------------------------------------------
 		}
-		#endregion
-		//<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+		
 	}
 }
