@@ -1,0 +1,163 @@
+
+	#menu
+	{
+		background: #ccc ;
+		border-bottom: 3px solid #191970;
+		border-top: 3px solid #191970;
+		line-height: 50px;
+	}
+	
+	#menu ul
+	{
+		
+		text-align: center;
+		margin: 0;
+		padding: 0px,0px,0px,0px;
+		
+	}
+	
+	.rectangle {
+ 	 width: 270px;
+  	 height: 25px;
+ 	 border-bottom: 2px solid #ccc;
+ 	 border-right: 2px solid #ccc;
+ 	 border-left: 2px solid #ccc;
+ 	 border-top: 2px solid #ccc;
+ 	 margin: 0;
+	}
+	
+	.input
+	{
+	 
+	
+	padding-left: 30px;
+	padding-right: 30px;
+	line-height: 30px;
+	}
+	
+	
+	#menu ul  a
+	{
+		
+		display: inline;
+		padding-left: 100px;
+		padding-right: 100px;
+		padding-bottom: 18px;
+		padding-top: 18px;
+		letter-spacing: 1px;
+		text-decoration: none;
+		text-transform: uppercase;
+		font-family: "Times New Roman", Times, serif;
+		font-size: 16px;
+		font-weight: 700;
+		color: #191970;
+		white-space: nowrap;
+		
+		
+	}
+	
+	#menu .current_page_item
+	{
+		background: #191970;
+		color: #FFF;
+	}
+	
+	#menu a:hover
+	{
+		text-decoration: none;
+		color: #FFF;
+	}
+	
+	/* CONFIGURACOES GERAL */
+
+	
+	.button
+	{
+     font-size: 12px;
+     font-weight: bold;
+   	 font-family:  Arial;
+   	 color:  #191970;
+ 	}
+ 	
+	.button:hover 
+	{
+     box-shadow: 0 6px 6px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	}
+	
+
+	#geral
+
+	{
+
+    border: 3px solid #191970;
+    margin: 1px auto;
+    width: 100%;
+	}
+
+	/* CABECALHO */
+
+	#cabecalho
+
+	{
+
+    min-height: 60px;
+    line-height: 60px;
+    padding: 15px 15px;
+    background-color: #fff;
+
+	}
+	
+	#cabecalho .Title
+	{
+	
+	
+	margin-left: 30%;
+    color: #191970;
+	text-shadow: 2px 2px 2px #cccccc, 2px 2px 2px #191970, 2px 2px 2px #cccccc;
+	text-decoration:none;
+	font: 60px Cambria;
+	
+	}
+
+	img.alignleft 
+	
+	{
+	
+	float:left;
+	margin:0 1em 1em 0
+	
+	}
+
+	/* CONTEUDO */
+
+	#conteudo
+
+	{
+
+    min-height: 400px;
+    padding: 10px;
+    background-color: #fff;
+
+	}
+
+	/* RODAPE */
+
+	#rodape
+
+	{
+	
+	border-top: 3px solid #191970;
+    background-color: #ccc;
+    min-height: 50px;
+    line-height: 50px;
+
+	}
+	
+	#rodape footer
+	{
+	
+	 text-align: right;
+	
+	
+	}
+

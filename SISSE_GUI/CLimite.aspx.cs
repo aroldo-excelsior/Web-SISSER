@@ -23,9 +23,13 @@ namespace SISSE_GUI
 	
 	
 	
-	public class Default : Page
+	public class CLimite : Page
 	{	
 		
+		protected  GridView GridViewTop;
+		protected TextBox CPF;
+		protected CheckBox CheckBox1,CheckBox2;
+		protected Label CPFCNPJ;
 
 		protected void PageInit(object sender, System.EventArgs e)
 		{
@@ -64,6 +68,20 @@ namespace SISSE_GUI
 			
 			
 		}
+		
+		protected void CheckBox1_CheckedChanged(object sender, System.EventArgs e){
+		
+			
+			CheckBox2.Checked = false;
+			CPFCNPJ.Text = "CPF:";
+				
+		}
+		
+		protected void CheckBox2_CheckedChanged(object sender, System.EventArgs e){
+		
+			CheckBox1.Checked = false;
+			CPFCNPJ.Text = "CNPJ:";	
+		}
 
 		protected override void OnInit(EventArgs e)
 		{	InitializeComponent();
@@ -77,8 +95,10 @@ namespace SISSE_GUI
 			this.Load	+= new System.EventHandler(Page_Load);
 			this.Init   += new System.EventHandler(PageInit);
 			this.Unload += new System.EventHandler(PageExit);
-			
-			
+			CPF.BorderColor = Color.Blue;
+			GridViewTop.RowCommand += new GridViewCommandEventHandler(GridView1_RowCommand);
+			CheckBox1.CheckedChanged += new System.EventHandler(CheckBox1_CheckedChanged);
+			CheckBox2.CheckedChanged += new System.EventHandler(CheckBox2_CheckedChanged);
 		}
 		
 	}
