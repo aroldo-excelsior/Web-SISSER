@@ -65,6 +65,7 @@
     <None Include="res\background.jpg" />
     <None Include="res\Excelsior.jpg" />
     <None Include="res\vet.png" />
+    <None Include="scripts\mascara.js" />
     <None Include="SISSE_GUI.csproj" />
     <None Include="StyleDataGrid.css" />
     <None Include="PaginaMestreGG.master" />
@@ -92,6 +93,7 @@
     <Compile Include="Repositorio.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="scripts" />
     <Folder Include="res" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

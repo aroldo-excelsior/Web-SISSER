@@ -29,7 +29,9 @@ namespace SISSE_GUI
 		protected  GridView GridViewTop;
 		protected TextBox CPF;
 		protected CheckBox CheckBox1,CheckBox2;
-		protected Label CPFCNPJ;
+		protected Label CPFCNPJ,information;
+		protected Button submit;
+		
 
 		protected void PageInit(object sender, System.EventArgs e)
 		{
@@ -43,13 +45,20 @@ namespace SISSE_GUI
 		private void Page_Load(object sender, System.EventArgs e)
 		{
 			
-			
+			if(!CheckBox1.Checked && !CheckBox2.Checked){
+				
+					setVisibleInputs(false);
+				}
 			
 			if(IsPostBack)
 			{
+			
+				if(!CheckBox1.Checked && !CheckBox2.Checked){
+				
+					setVisibleInputs(false);
+				}
+				
 			}
-			
-			
 		}
 	
 		protected void Click_Button_Ok(object sender, System.EventArgs e)
@@ -59,6 +68,38 @@ namespace SISSE_GUI
 
 		protected void Changed_Input_Name(object sender, System.EventArgs e)
 		{
+			
+		}
+		
+		public void setVisibleInputs(Boolean b){
+			
+			submit.Visible = b;
+			CPFCNPJ.Visible = b;
+			CPF.Visible = b;
+		
+		}
+		
+		protected void Submit_Click(object sender, System.EventArgs e){
+		
+			if(CPF.Text == ""){
+				information.Text = "Campo nulo";
+				information.ForeColor = Color.Red;
+				information.Visible = true;
+			}else if(CheckBox1.Checked && CPF.Text.Length < 14){
+			
+				information.Text = "CPF incompleto";
+				information.ForeColor = Color.Red;
+				information.Visible = true;
+				
+				
+			}else if(CheckBox2.Checked && CPF.Text.Length < 18){
+			
+				information.Text = "CNPJ incompleto";
+				information.ForeColor = Color.Red;
+				information.Visible = true;
+			}else{
+				information.Visible = false;
+			}
 			
 		}
 
@@ -71,16 +112,24 @@ namespace SISSE_GUI
 		
 		protected void CheckBox1_CheckedChanged(object sender, System.EventArgs e){
 		
-			
+			if(CheckBox1.Checked){
 			CheckBox2.Checked = false;
+			CPF.Text = "";
 			CPFCNPJ.Text = "CPF:";
+			CPF.Attributes.Add("onkeyup","formataCPF(this,event)");
+			setVisibleInputs(true);}
 				
 		}
 		
 		protected void CheckBox2_CheckedChanged(object sender, System.EventArgs e){
 		
+			if(CheckBox2.Checked){
 			CheckBox1.Checked = false;
-			CPFCNPJ.Text = "CNPJ:";	
+			CPF.Text = "";
+			CPFCNPJ.Text = "CNPJ:";
+			CPF.Attributes.Add("onkeyup","formataCNPJ(this,event)");
+			setVisibleInputs(true);}
+			
 		}
 
 		protected override void OnInit(EventArgs e)
@@ -99,6 +148,9 @@ namespace SISSE_GUI
 			GridViewTop.RowCommand += new GridViewCommandEventHandler(GridView1_RowCommand);
 			CheckBox1.CheckedChanged += new System.EventHandler(CheckBox1_CheckedChanged);
 			CheckBox2.CheckedChanged += new System.EventHandler(CheckBox2_CheckedChanged);
+			submit.Click += new System.EventHandler(Submit_Click);
+				
+				
 		}
 		
 	}

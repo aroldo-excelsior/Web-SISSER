@@ -16,7 +16,26 @@
 		
 	}
 	
-	.rectangle {
+	#menu input
+	{
+	 
+	  padding-bottom: 3px;	
+	}
+	
+    
+	#itens p
+	{
+	
+	 margin: 0 auto;
+	 padding-right: 150px;
+	 white-space: nowrap;
+	 
+	}
+	
+	
+	.rectangle 
+	{
+	
  	 width: 270px;
   	 height: 25px;
  	 border-bottom: 2px solid #ccc;
@@ -24,6 +43,8 @@
  	 border-left: 2px solid #ccc;
  	 border-top: 2px solid #ccc;
  	 margin: 0;
+ 	 text-align: center;
+ 	 
 	}
 	
 	.input
@@ -88,7 +109,7 @@
 	#geral
 
 	{
-
+	
     border: 3px solid #191970;
     margin: 1px auto;
     width: 100%;
