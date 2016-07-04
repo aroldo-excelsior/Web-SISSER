@@ -98,8 +98,30 @@ namespace SISSE_GUI
 				information.ForeColor = Color.Red;
 				information.Visible = true;
 			}else{
-				information.Visible = false;
+				
+				if(CPF.Text.Length == 14)
+					information.Text = SoNumerosCPF(CPF.Text);
+				
+				if(CPF.Text.Length == 18)
+					information.Text = SoNumerosCNPJ(CPF.Text);
+				
+				information.Visible = true;
 			}
+			
+		}
+		
+		protected String SoNumerosCPF(String CPF){
+			String str ="CPF: "+ CPF.Substring(0,3)+CPF.Substring(4,3)+CPF.Substring(8,3)+CPF.Substring(12,2);
+			
+			
+			return str;
+		
+		}
+		protected String SoNumerosCNPJ(String CNPJ){
+			String str ="CNPJ: "+ CNPJ.Substring(0,2)+CNPJ.Substring(3,3)+CNPJ.Substring(7,3)+CNPJ.Substring(11,4)+CNPJ.Substring(16,2);
+			
+			
+			return str;
 			
 		}
 
@@ -114,6 +136,7 @@ namespace SISSE_GUI
 		
 			if(CheckBox1.Checked){
 			CheckBox2.Checked = false;
+			information.Visible = false;
 			CPF.Text = "";
 			CPFCNPJ.Text = "CPF:";
 			CPF.Attributes.Add("onkeyup","formataCPF(this,event)");
@@ -125,6 +148,7 @@ namespace SISSE_GUI
 		
 			if(CheckBox2.Checked){
 			CheckBox1.Checked = false;
+			information.Visible = false;
 			CPF.Text = "";
 			CPFCNPJ.Text = "CNPJ:";
 			CPF.Attributes.Add("onkeyup","formataCNPJ(this,event)");

@@ -15,7 +15,7 @@
 		  <form id="Form1" method="post">
 		  
 			<div id="itens" align="center">	
-			   <p class="Pdoc">Tipo de documento:</p>
+			   <p class="Pdoc">Tipo do documento:</p>
 				  <div class="rectangle">
 					<asp:CheckBox ID="CheckBox1" Text="CPF" class="input" AutoPostBack="true" runat="server" oncheckedchanged="CheckBox1_CheckedChanged" />
 					<asp:CheckBox ID="CheckBox2" Text="CNPJ" class="input" AutoPostBack="true" runat="server" oncheckedchanged="CheckBox2_CheckedChanged" /><br/>

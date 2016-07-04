@@ -38,6 +38,10 @@ namespace SISSE_GUI
 		
 		protected void PageInit(object sender, System.EventArgs e)
 		{
+			
+			
+			
+			
 		}
 		//----------------------------------------------------------------------
 		protected void PageExit(object sender, System.EventArgs e)
@@ -113,6 +117,7 @@ namespace SISSE_GUI
 		protected override void OnInit(EventArgs e)
 		{	InitializeComponent();
 			base.OnInit(e);
+			
 		}
 		//----------------------------------------------------------------------
 		private void InitializeComponent()

@@ -65,10 +65,10 @@
                     			</ItemTemplate>
                 			</asp:TemplateField>                			
                 		
-                			<asp:TemplateField HeaderText="Stack Trace" >
+                			<asp:TemplateField HeaderText="Stack Trace">
                     			<ItemTemplate>
                     			
-                    				<asp:Button id="teste" Text="Download" CommandArgument='<%# Eval("Stack_Trace") %>' class="button"  CommandName="downtrace" runat="server" />
+                    				<asp:Button id="teste" Text="Exibir" CommandArgument='<%# Eval("Stack_Trace") %>' class="button"  CommandName="downtrace" onclientclick="window.open('xmls.aspx')" runat="server" />
                     			
                     			</ItemTemplate>
                 			</asp:TemplateField>
@@ -76,7 +76,7 @@
                 			<asp:TemplateField HeaderText="Dados Enviados" >
                     			<ItemTemplate>
                     			
-                    				<asp:Button id="Dados" Text="Download" CommandArgument='<%# Eval("Argumento") %>' class="button"  CommandName="downDados" runat="server" />
+                    				<asp:Button id="Dados" Text="Exibir" CommandArgument='<%# Eval("Argumento") %>' class="button"  CommandName="downDados" onclientclick="window.open('xmls.aspx')" runat="server" />
                     			
                     			</ItemTemplate>
                 			</asp:TemplateField>

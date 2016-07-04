@@ -70,6 +70,7 @@
     <None Include="StyleDataGrid.css" />
     <None Include="PaginaMestreGG.master" />
     <None Include="Web.config" />
+    <None Include="xmls.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
@@ -91,6 +92,9 @@
     <Compile Include="IAcessForConsultation.cs" />
     <Compile Include="ObjectEventLog.cs" />
     <Compile Include="Repositorio.cs" />
+    <Compile Include="xmls.aspx.cs">
+      <DependentUpon>xmls.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="scripts" />

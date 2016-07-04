@@ -24,6 +24,8 @@ using System.IO;
 using System.Text.RegularExpressions;
 using System.Xml;
 using SISSERCore;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace SISSE_GUI
 {
@@ -71,7 +73,7 @@ namespace SISSE_GUI
 		private void Page_Load(object sender, EventArgs e)
 		{
 			
-			
+			Session["xml"] = "000";
 			if(IsPostBack)
 			{
 			
@@ -195,90 +197,18 @@ namespace SISSE_GUI
 			
 			if(e.CommandName == "downDados"){
 				
+				Session["xml"] = e.CommandArgument.ToString();
 				
-				
-				string folder = @"temp\\"; 
-				if (!Directory.Exists(folder))
-				{
-					
- 				Directory.CreateDirectory(folder);
- 				
-				}
-				
-				
-				string filename = folder +"DadosEnviados"+nrProposta.Text+".xml";
-				
-				
-				System.IO.File.WriteAllText(filename,e.CommandArgument.ToString());
-				
-				
-				
-                byte[] bts = System.IO.File.ReadAllBytes(filename);
-                String str = bts.ToString();
-               	Response.ClearHeaders();
-                Response.AddHeader("Content-Disposition", "attachment;   filename=" + Path.GetFileName(filename));
-                Response.BinaryWrite(bts);
-                Response.Flush();
-                Response.End();
-				
-				
-			}
-			if(e.CommandName == "downErro"){
 			
-					string folder = @"temp\\"; 
-				if (!Directory.Exists(folder))
-				{
-					
- 				Directory.CreateDirectory(folder);
- 				
-				}
-				
-				
-				string filename = folder +"MessageDeErro"+nrProposta.Text+".xml";
-				
-				
-				System.IO.File.WriteAllText(filename,e.CommandArgument.ToString());
-				
-				
-				
-                byte[] bts = System.IO.File.ReadAllBytes(filename);
-                String str = bts.ToString();
-               	Response.ClearHeaders();
-                Response.AddHeader("Content-Disposition", "attachment;   filename=" + Path.GetFileName(filename));
-                Response.BinaryWrite(bts);
-                Response.Flush();
-                Response.End();
-				
-				
+              
 				
 			}
 			
 			if(e.CommandName == "downtrace"){
 				
-				string folder = @"temp\\"; 
-				if (!Directory.Exists(folder))
-				{
-					
- 				Directory.CreateDirectory(folder);
- 				
-				}
 				
+				Session["xml"] = e.CommandArgument.ToString();
 				
-				string filename = folder +"Trace"+ nrProposta.Text+".xml";
-				
-				
-				System.IO.File.WriteAllText(filename,e.CommandArgument.ToString());
-				
-				
-				
-                byte[] bts = System.IO.File.ReadAllBytes(filename);
-                String str = bts.ToString();
-               	Response.ClearHeaders();
-                Response.AddHeader("Content-Disposition", "attachment;   filename=" + Path.GetFileName(filename));
-                Response.BinaryWrite(bts);
-                Response.Flush();
-                Response.End();
-                
            
                }
 			

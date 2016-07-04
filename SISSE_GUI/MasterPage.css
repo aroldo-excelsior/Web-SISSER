@@ -22,13 +22,22 @@
 	  padding-bottom: 3px;	
 	}
 	
+	#itens
+	{
+	
+		font-weight: bold;
+	
+	}
+	
     
 	#itens p
 	{
 	
 	 margin: 0 auto;
-	 padding-right: 150px;
+	 padding-right: 140px;
 	 white-space: nowrap;
+	 font-family: "Times New Roman", Times, serif;
+	 
 	 
 	}
 	
@@ -44,6 +53,7 @@
  	 border-top: 2px solid #ccc;
  	 margin: 0;
  	 text-align: center;
+ 	 
  	 
 	}
 	
