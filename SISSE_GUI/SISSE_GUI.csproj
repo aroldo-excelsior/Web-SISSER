@@ -36,7 +36,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="SISSERCore">
-      <HintPath>..\..\..\..\Desktop\sisserdll\SISSERCore.dll</HintPath>
+      <HintPath>E:\SISSERCore.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -59,9 +59,12 @@
   <ItemGroup>
     <None Include="CLimite.aspx" />
     <None Include="Default.aspx" />
+    <None Include="LProposta.aspx" />
     <None Include="MasterPage.css" />
     <None Include="PProposta.aspx" />
     <None Include="Global.asax" />
+    <None Include="res\arrow.png" />
+    <None Include="res\arrow2.png" />
     <None Include="res\background.jpg" />
     <None Include="res\Excelsior.jpg" />
     <None Include="res\vet.png" />
@@ -82,6 +85,10 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="IGetLimites.cs" />
+    <Compile Include="LProposta.aspx.cs">
+      <DependentUpon>LProposta.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ObjectProposta.cs" />
     <Compile Include="PaginaMestreGG.cs">
       <DependentUpon>PaginaMestreGG.master</DependentUpon>
     </Compile>

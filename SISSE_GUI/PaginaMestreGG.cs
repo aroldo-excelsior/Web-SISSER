@@ -32,7 +32,7 @@ namespace SISSE_GUI
 	public partial class PaginaMestreGG: MasterPage
 	{	
 		
-		protected LinkButton li1,li2;
+		protected LinkButton li1,li2,li3;
 		
 		
 		
@@ -59,6 +59,10 @@ namespace SISSE_GUI
 			}else if(HttpContext.Current.Request.Url.ToString().ToUpper().Contains("PPROPOSTA")){
 				
 				li2.CssClass = "current_page_item";
+				
+			}else if(HttpContext.Current.Request.Url.ToString().ToUpper().Contains("LPROPOSTA")){
+				
+				li3.CssClass = "current_page_item";
 				
 			}
 			
@@ -102,6 +106,16 @@ namespace SISSE_GUI
 			
 		}
 		
+		protected void MyFuncion_Click3(object sender, System.EventArgs e)
+		{
+			
+			
+			Response.Redirect("LProposta.aspx");
+			
+			
+			
+		}
+		
 		
 
 		
@@ -127,6 +141,7 @@ namespace SISSE_GUI
 			this.Unload += new System.EventHandler(PageExit);
 			this.li1.Click += new System.EventHandler(MyFuncion_Click);
 			this.li2.Click += new System.EventHandler(MyFuncion_Click2);
+			this.li3.Click += new System.EventHandler(MyFuncion_Click3);
 			//------------------------------------------------------------------
 			
 			//------------------------------------------------------------------

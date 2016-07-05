@@ -50,6 +50,7 @@
 				<div id="menu" runat="server" >
 					<ul id="nav"  >
 						<asp:LinkButton ID="li1" runat="server">Consultar Limite</asp:LinkButton>
+						<asp:LinkButton ID="li3" runat="server">Listar Proposta</asp:LinkButton>	
 						<asp:LinkButton ID="li2" runat="server">Pesquisar Proposta</asp:LinkButton>					
 					</ul>
 				</div>

@@ -16,6 +16,7 @@ using System.Web.SessionState;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
+using System.Text;
 
 namespace SISSE_GUI
 {
@@ -26,11 +27,12 @@ namespace SISSE_GUI
 	public class CLimite : Page
 	{	
 		
-		protected  GridView GridViewTop;
+		
 		protected TextBox CPF;
 		protected CheckBox CheckBox1,CheckBox2;
 		protected Label CPFCNPJ,information;
 		protected Button submit;
+		protected Literal gridViewsLimite;
 		
 
 		protected void PageInit(object sender, System.EventArgs e)
@@ -99,11 +101,20 @@ namespace SISSE_GUI
 				information.Visible = true;
 			}else{
 				
-				if(CPF.Text.Length == 14)
+				if(CPF.Text.Length == 14){
+					
+					
 					information.Text = SoNumerosCPF(CPF.Text);
+					
+					AddGrid();
 				
-				if(CPF.Text.Length == 18)
+				}
+				
+				if(CPF.Text.Length == 18){
+					
 					information.Text = SoNumerosCNPJ(CPF.Text);
+					
+				}
 				
 				information.Visible = true;
 			}
@@ -124,7 +135,19 @@ namespace SISSE_GUI
 			return str;
 			
 		}
-
+		
+		
+		protected void AddGrid(){
+		
+			
+			StringBuilder sb = new StringBuilder();
+			
+			sb.AppendLine("<p> isso e um teste </p>");
+			
+			
+			
+			
+		}
 		
 		protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e){
 		
@@ -169,10 +192,12 @@ namespace SISSE_GUI
 			this.Init   += new System.EventHandler(PageInit);
 			this.Unload += new System.EventHandler(PageExit);
 			CPF.BorderColor = Color.Blue;
-			GridViewTop.RowCommand += new GridViewCommandEventHandler(GridView1_RowCommand);
+			//.RowCommand += new GridViewCommandEventHandler(GridView1_RowCommand);
 			CheckBox1.CheckedChanged += new System.EventHandler(CheckBox1_CheckedChanged);
 			CheckBox2.CheckedChanged += new System.EventHandler(CheckBox2_CheckedChanged);
 			submit.Click += new System.EventHandler(Submit_Click);
+			
+			
 				
 				
 		}
