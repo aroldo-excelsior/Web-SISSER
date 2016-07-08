@@ -27,6 +27,20 @@ namespace SISSE_GUI
 			}
 			
 		}
+		
+		public List<ObjectProposta> ResgatarPropostas(){
+			
+			return Repositorio.GetInstance().ResgatarPropostas();
+		
+		}
+		
+		public ObjectEventLog ResgatarArgsStackTraceEventLogs(string IDeventlog){
+		
+			return Repositorio.GetInstance().ResgatarArgsStackTraceEventLogs(IDeventlog);
+			
+		}
+		
+		
 		public List<ObjectEventLog> ResgatarEventLogs(string nrProposta){
 			
 			coll = Repositorio.GetInstance().ResgatarEventLogs(nrProposta);

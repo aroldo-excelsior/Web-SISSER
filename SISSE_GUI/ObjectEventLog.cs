@@ -22,11 +22,26 @@ namespace SISSE_GUI
 		private int _Sequencia;
 		private int _IDApolice;
 		private string _dt_rgs_insercao;
+		private int _autorizacao_usuario;
+		private int _id;
 		
 		public string dt_rgs_insercao{
 		
 			get{return this._dt_rgs_insercao;}
 			set{this._dt_rgs_insercao = value;}
+			
+		}
+		
+		public int autorizacao_usuario{
+		
+			get{return this._autorizacao_usuario;}
+			set{this._autorizacao_usuario = value;}
+		}
+		
+		public int id{
+			
+			get{return this._id;}
+			set{this._id = value;}	
 			
 		}
 		

@@ -1,0 +1,74 @@
+﻿<%@ Master Language="C#"
+	CodeBehind="PaginaMestreGG.cs"
+	Inherits="SISSE_GUI.PaginaMestreGG" %>
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head >
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>SISSE_GUI</title>
+		
+		<script type="text/javascript">
+        	function PermiteSomenteNumeros(event){
+            	var charCode = (event.which) ? event.which : event.keyCode
+            	if (charCode  >  31 && (charCode  <  48 || charCode  >  57))
+                	return false;
+            	return true;
+        	}
+     	</script>
+     	
+     	<SCRIPT src="scripts/mascara.js" type=text/javascript></SCRIPT>
+     	
+		
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta http-equiv="CACHE-CONTROL" content="NO-CACHE" />
+		<meta http-equiv="PRAGMA" content="NO-CACHE" />
+		<meta name="keywords" content="" />
+		<meta name="description" content="" />
+
+		<link href="StyleDataGrid.css" rel="stylesheet" type="text/css"/>
+		<link href="MasterPage.css" rel="stylesheet" type="text/css" media="all" />
+		
+	    
+		
+	</head>
+	<body background="res\background.jpg" runat="server" >
+		<form runat="server">
+        	<div id="geral" runat="server" >
+
+            	<div id="cabecalho" background="res\background.jpg">
+            	
+            	<img  src="res\\excelsior.jpg" class="alignleft" width="205" height="70">
+            	
+            	<a class="Title" href="Default.aspx">
+            	 	SISSER
+            	</a>
+            	
+            	</div>
+				<div id="menu" runat="server" >
+					<ul id="nav"  >
+						<asp:LinkButton ID="li1" runat="server">Consultar Limite</asp:LinkButton>
+						<asp:LinkButton ID="li3" runat="server">Listar Proposta</asp:LinkButton>	
+						<asp:LinkButton ID="li2" runat="server">Pesquisar Proposta</asp:LinkButton>					
+					</ul>
+				</div>
+            	
+
+            	<div id="conteudo" >
+
+              		<asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+					</asp:ContentPlaceHolder>
+
+           		</div>
+
+            	<div id="rodape">
+					
+               		<footer> Version 1.1.0 - 2016 by Cia Excelsior de Seguros Development Team.&ensp;</footer>
+
+            	</div>
+       		 </div>
+		</form>
+	</body>
+</html>
