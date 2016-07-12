@@ -23,7 +23,7 @@
     					PagerStyle-CssClass="pager"
     					HeaderStyle-CssClass="header"
     					RowStyle-CssClass="rows"
-    					AllowPaging="True" 
+    					AllowPaging="true" 
     					runat="server" 
    					>
     					<Columns>
@@ -53,13 +53,24 @@
                 			<asp:TemplateField HeaderText="Autorizar" >
                     			<ItemTemplate>
                     			
-                    				<asp:Button id="autorizar" Text="Autorizar" class="button" CommandArgument='<%# Eval("id_proposta") %>'  AutoPostBack="true" runat="server" />
-                    				<asp:Label id="autorizarLbl" Text='Autorizado' Visible='false'  runat="server" />
+                    				<asp:Button id="autorizar" Text="Autorizar" class="button" CommandArgument='<%# Eval("id_proposta") %>' onClick="autorizar_click" runat="server" />
+                    				<asp:Label id="autorizarLbl" Text='Autorizado' Visible='false'   runat="server" />
                     			
+                    			</ItemTemplate>
+                			</asp:TemplateField>
+                			
+                			<asp:TemplateField HeaderText="Pesquisar" >
+                    			<ItemTemplate>
+                    			
+                    				<asp:Button id="pesquisar" Text="Pesquisar" class="button" onClick='<%# String.Format("window.open(\"PProposta.aspx?prop={0}\");", Eval("nrProposta")) %>' runat="server" />
+                    				
                     			</ItemTemplate>
                 			</asp:TemplateField>
                     
             			</Columns>
+            			<PagerSettings FirstPageText="<<" LastPageText=">>"
+  						Mode="NextPreviousFirstLast" NextPageText=">" PreviousPageText="<" />
+            			
     		
 					</asp:GridView>
 				</form>

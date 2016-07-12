@@ -55,32 +55,18 @@ namespace SISSE_GUI
 		
 			List<ObjectProposta> coll = Controle.Getinstance().ResgatarPropostas();
 			
-			for(int i =0; i<coll.Count; i++){
-			
-				if(coll[i].cdPropostaSISSER == 0 && coll[i].autorizacao_usuario == 0){
-				
-					
-					
-				}
-			}
-			
 			GridView1.DataSource = coll;
-			
+			GridView1.PageSize = 15;
 			GridView1.DataBind();
+			
 			
 			GridViewRowCollection rc = GridView1.Rows;
 			for(int i=0; i<rc.Count;i++){
 				autorizar = (Button) rc[i].Cells[6].FindControl("autorizar");
-				cdProSISSER = (Label) rc[i].Cells[2].FindControl("cdProSISSER");
 				autorizarLbl = (Label) rc[i].Cells[6].FindControl("autorizarLbl");
-				autorizar.Click += new System.EventHandler(autorizar_click);
 				
 				
-				if(cdProSISSER.Text.Equals("0")){
-					cdProSISSER.Text = "Não Apresenta";
-				}
-				
-				if((coll[i].cdPropostaSISSER == 0) && (coll[i].autorizacao_usuario == 0)){
+				if((coll[i].cdPropostaSISSER.Equals("0")) && (coll[i].autorizacao_usuario == 0)){
 					
 					autorizar.Visible = true;
 					
@@ -105,11 +91,23 @@ namespace SISSE_GUI
 			
 				int id = int.Parse(aut.CommandArgument.ToString());
 				String User = Request.ServerVariables["AUTH_USER"];
-			
-				f.AutorizarEnvioProposta(id,User);
+				
+				Response.Write(aut.CommandArgument.ToString());
+				
+				
+				//f.AutorizarEnvioProposta(id,User);
 			
 		}
 		
+		
+		
+  		void GridView_PageIndexChanging(Object sender, GridViewPageEventArgs e)
+  		{
+  		
+  			GridView1.PageIndex = e.NewPageIndex;
+  			GridView1.DataBind();
+  			
+  		}
 		
 		
 		
@@ -125,7 +123,7 @@ namespace SISSE_GUI
 			this.Load	+= new System.EventHandler(Page_Load);
 			this.Init   += new System.EventHandler(PageInit);
 			this.Unload += new System.EventHandler(PageExit);
-			
+			this.GridView1.PageIndexChanging += new GridViewPageEventHandler(GridView_PageIndexChanging);
 			
 		}
 	

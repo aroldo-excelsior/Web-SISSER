@@ -17,6 +17,9 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.UI.HtmlControls;
 using System.Text;
+using SISSERCore;
+using System.Collections.Generic;
+using SISSE_GUI.Mock;
 
 namespace SISSE_GUI
 {
@@ -30,10 +33,16 @@ namespace SISSE_GUI
 		
 		protected TextBox CPF;
 		protected CheckBox CheckBox1,CheckBox2;
-		protected Label CPFCNPJ,information;
-		protected Button submit;
-		protected Literal gridViewsLimite;
+		protected Label CPFCNPJ,information,nmSegurado,nrCPFCNPJSegurado,ano;
+		protected Button submit,detalhes;
+		protected GridView Gridview1,Gridview2;
+		protected Literal literal;
+		protected DropDownList DropList;
+		//protected Repeater repGrid;
 		
+		
+		//protected void repGridItemCreated(Object Sender, RepeaterItemEventArgs e){
+		//}
 
 		protected void PageInit(object sender, System.EventArgs e)
 		{
@@ -50,6 +59,7 @@ namespace SISSE_GUI
 			if(!CheckBox1.Checked && !CheckBox2.Checked){
 				
 					setVisibleInputs(false);
+				
 				}
 			
 			if(IsPostBack)
@@ -78,8 +88,11 @@ namespace SISSE_GUI
 			submit.Visible = b;
 			CPFCNPJ.Visible = b;
 			CPF.Visible = b;
-		
+			DropList.Visible = b;
+			ano.Visible = b;
 		}
+		
+		
 		
 		protected void Submit_Click(object sender, System.EventArgs e){
 		
@@ -104,20 +117,80 @@ namespace SISSE_GUI
 				if(CPF.Text.Length == 14){
 					
 					
-					information.Text = SoNumerosCPF(CPF.Text);
+					//information.Text = SoNumerosCPF(CPF.Text);
 					
-					AddGrid();
-				
+					FacadeMock f = FacadeMock.Instance;
+					String Login = "EXCELSIOR\aroldo.andrade"; //Request.ServerVariables["AUTH_USER"];
+					int ano = int.Parse(DropList.Text);
+					
+					List<Segurado> segurados = f.ConsultarLimiteFinanceiroSegurado(SoNumerosCPF(CPF.Text),ano,Login);
+					
+					if(segurados.Count == 0){
+						information.Text = "Não a Segurados para esse CPF";
+						information.Visible = true;
+					}else{
+						information.Visible = false;
+						BindGridview(segurados);
+						
+					}
+					
+					
 				}
 				
 				if(CPF.Text.Length == 18){
 					
-					information.Text = SoNumerosCNPJ(CPF.Text);
+					//information.Text = SoNumerosCNPJ(CPF.Text);
+					
+					FacadeMock f = FacadeMock.Instance;
+					String Login = "EXCELSIOR\aroldo.andrade";
+					
+					List<Segurado> segurados = f.ConsultarLimiteFinanceiroSegurado(SoNumerosCNPJ(CPF.Text),2016,Login);
+					
+					if(segurados.Count == 0){
+						information.Text = "Não a Segurados para esse CNPJ";
+						information.Visible = true;
+					}else{
+						information.Visible = false;
+						BindGridview(segurados);
+						
+					}
 					
 				}
 				
 				information.Visible = true;
 			}
+			
+		}
+		
+		protected void BindGridview(List<Segurado> segurados){
+				Gridview1.DataSource = segurados;
+				Gridview2.DataSource = segurados[0].LimiteFinanceiro.Modalidades;
+				Gridview2.DataBind();
+				Gridview1.DataBind();
+				
+				
+		}
+		
+		
+		
+		protected void Detalhes_Click(object sender, System.EventArgs e){
+		
+			Button b = (Button) sender;
+			
+			if(b.Text.Equals("+")){
+			
+				Gridview2.Visible = true;
+				b.Text = "-";
+			}else{
+				
+				Gridview2.Visible = false;
+				b.Text = "+";
+				
+			}
+			
+			
+			
+			
 			
 		}
 		
@@ -137,17 +210,7 @@ namespace SISSE_GUI
 		}
 		
 		
-		protected void AddGrid(){
 		
-			
-			StringBuilder sb = new StringBuilder();
-			
-			sb.AppendLine("<p> isso e um teste </p>");
-			
-			
-			
-			
-		}
 		
 		protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e){
 		
@@ -181,9 +244,21 @@ namespace SISSE_GUI
 
 		protected override void OnInit(EventArgs e)
 		{	InitializeComponent();
+			
 			base.OnInit(e);
 		}
 		
+		protected void PopulaDropDown(){
+		
+			List<string> anos = new List<string>();
+			
+			anos.Add(DateTime.Now.Year.ToString());
+			anos.Add(((DateTime.Now.Year)-1).ToString());
+			
+			DropList.DataSource = anos;
+			DropList.DataBind();
+			
+		}
 		
 		private void InitializeComponent()
 		{
@@ -196,7 +271,9 @@ namespace SISSE_GUI
 			CheckBox1.CheckedChanged += new System.EventHandler(CheckBox1_CheckedChanged);
 			CheckBox2.CheckedChanged += new System.EventHandler(CheckBox2_CheckedChanged);
 			submit.Click += new System.EventHandler(Submit_Click);
+			//repGrid.ItemDataBound += new RepeaterItemEventHandler(repGridItemCreated);
 			
+			PopulaDropDown();
 			
 				
 				

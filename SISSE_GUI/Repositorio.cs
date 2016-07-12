@@ -46,15 +46,18 @@ namespace SISSE_GUI
         		string sql ="select "+
 								"eap.id as [Id Apolice],"+
 								"eap.dt_proposta as [Data Inserção],"+
-        						"eps.cdPropostaSISSER as [Codigo SISSER],"+
         						"eap.nrProposta as [Numero Proposta],"+
 								"eap.nmSegurado as [Nome Segurado],"+
         						"eap.nrCpfCnpjSegurado as [CPF/CNPJ],"+
-        						"eap.autorizacao_usuario as [Autorização Usuario] "+
+        						"eap.autorizacao_usuario as [Autorização Usuario], "+
+        						"CASE WHEN eps.cdPropostaSISSER = 0 THEN 'Não Apresenta'  "+ 
+	                            "WHEN eps.cdPropostaSISSER != 0 THEN eps.cdPropostaSISSER "+
+								"END "+
 							"from "+
         						"EXCD_Apolice as eap "+
         					"inner join "+
-								"EXCD_ProgramaSubvencao_Apolice as eps on eap.id = eps.id_apolice";
+								"EXCD_ProgramaSubvencao_Apolice as eps on eap.id = eps.id_apolice "+
+        					"order by eap.dt_proposta desc";
 							
         		SqlCommand adapt = new SqlCommand(sql, conn);
         
@@ -68,11 +71,11 @@ namespace SISSE_GUI
         					
                 			if(!ler.IsDBNull(0))u.id_proposta = ler.GetInt32(0);else u.id_proposta = 0;
                 			if(!ler.IsDBNull(1))u.dt_proposta = ler.GetDateTime(1).ToString();else u.dt_proposta = "Não Apresenta";
-                			if(!ler.IsDBNull(2))u.cdPropostaSISSER = ler.GetInt32(2);else u.cdPropostaSISSER = 0;
-                			if(!ler.IsDBNull(3))u.nrProposta = ler.GetString(3);else u.nrProposta = "Não Apresenta";
-                			if(!ler.IsDBNull(4))u.nmSegurado = ler.GetString(4);else u.nmSegurado = "Não Apresenta";
-                			if(!ler.IsDBNull(5))u.nrCpfCnpjSegurado = ler.GetInt64(5);else u.nrCpfCnpjSegurado = 0;
-                			if(!ler.IsDBNull(6))u.autorizacao_usuario = ler.GetInt32(6);else u.autorizacao_usuario = 0;
+                			if(!ler.IsDBNull(2))u.nrProposta = ler.GetString(2);else u.nrProposta = "Não Apresenta";
+                			if(!ler.IsDBNull(3))u.nmSegurado = ler.GetString(3);else u.nmSegurado = "Não Apresenta";
+                			if(!ler.IsDBNull(4))u.nrCpfCnpjSegurado = ler.GetInt64(4);else u.nrCpfCnpjSegurado = 0;
+                			if(!ler.IsDBNull(5))u.autorizacao_usuario = ler.GetInt32(5);else u.autorizacao_usuario = 0;
+                			if(!ler.IsDBNull(6))u.cdPropostaSISSER = ler[6].ToString(); else u.cdPropostaSISSER = "Não Apresenta";
                 	
                 			coll.Add(u);
                 			

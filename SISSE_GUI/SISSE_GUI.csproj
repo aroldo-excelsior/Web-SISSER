@@ -62,8 +62,8 @@
     <None Include="desen.aspx" />
     <None Include="LProposta.aspx" />
     <None Include="MasterPage.css" />
+    <None Include="PaginaMestreGG.master" />
     <None Include="PProposta.aspx" />
-    <None Include="Global.asax" />
     <None Include="res\arrow.png" />
     <None Include="res\arrow2.png" />
     <None Include="res\background.jpg" />
@@ -73,16 +73,15 @@
     <None Include="scripts\mascara.js" />
     <None Include="SISSE_GUI.csproj" />
     <None Include="StyleDataGrid.css" />
-    <None Include="PaginaMestreGG.master" />
     <None Include="Web.config" />
     <None Include="xmls.aspx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssemblyInfo.cs" />
-    <Compile Include="Controle.cs" />
     <Compile Include="CLimite.aspx.cs">
       <DependentUpon>CLimite.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Controle.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
@@ -93,6 +92,10 @@
     <Compile Include="LProposta.aspx.cs">
       <DependentUpon>LProposta.aspx</DependentUpon>
     </Compile>
+    <Compile Include="IAcessForConsultation.cs" />
+    <Compile Include="Mock\FacadeMock.cs" />
+    <Compile Include="Mock\MockTest.cs" />
+    <Compile Include="ObjectEventLog.cs" />
     <Compile Include="ObjectProposta.cs" />
     <Compile Include="PaginaMestreGG.cs">
       <DependentUpon>PaginaMestreGG.master</DependentUpon>
@@ -100,15 +103,13 @@
     <Compile Include="PProposta.aspx.cs">
       <DependentUpon>PProposta.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Global.asax.cs" />
-    <Compile Include="IAcessForConsultation.cs" />
-    <Compile Include="ObjectEventLog.cs" />
     <Compile Include="Repositorio.cs" />
     <Compile Include="xmls.aspx.cs">
       <DependentUpon>xmls.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Mock" />
     <Folder Include="scripts" />
     <Folder Include="res" />
   </ItemGroup>

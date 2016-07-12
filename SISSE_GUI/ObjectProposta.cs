@@ -18,7 +18,7 @@ namespace SISSE_GUI
 		
 		private int _id_Proposta;
 		private string _dt_proposta;
-		private int _cdPropostaSISSER;
+		private string _cdPropostaSISSER;
 		private string _nrProposta;
 		private string _nmSegurado;
 		private long _nrCpfCnpjSegurado;
@@ -31,7 +31,7 @@ namespace SISSE_GUI
 			
 		}
 		
-		public int cdPropostaSISSER{
+		public string cdPropostaSISSER{
 		
 			get{return this._cdPropostaSISSER;}
 			set{this._cdPropostaSISSER = value;}

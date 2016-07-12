@@ -3,7 +3,7 @@
 <%@ Page
 	Language           = "C#"
 	AutoEventWireup    = "false"
-	MasterPageFile="~/PaginaMestreGG.master"
+	MasterPageFile="~/View/PaginaMestreGG.master"
 	MaintainScrollPositionOnPostback="true"
 	Inherits           = "SISSE_GUI.desen"
 	ValidateRequest    = "false"

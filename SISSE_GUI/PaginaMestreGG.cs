@@ -98,7 +98,7 @@ namespace SISSE_GUI
 			//li2.CssClass = "";
 			//Response.Redirect("CLimite.aspx");
 			Session["page"] = "CLimite";
-			Response.Redirect("desen.aspx");
+			Response.Redirect("CLimite.aspx");
 			
 			
 		}

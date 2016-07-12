@@ -34,7 +34,7 @@
 	{
 	
 	 margin: 0 auto;
-	 padding-right: 140px;
+	 padding-right: 160px;
 	 white-space: nowrap;
 	 font-family: "Times New Roman", Times, serif;
 	 
@@ -45,7 +45,7 @@
 	.rectangle 
 	{
 	
- 	 width: 270px;
+ 	 width: 290px;
   	 height: 25px;
  	 border-bottom: 2px solid #ccc;
  	 border-right: 2px solid #ccc;
@@ -101,6 +101,23 @@
 	
 	/* CONFIGURACOES GERAL */
 	
+	.buttonl
+	{
+	
+		padding-left: 120px;
+		padding-right: 120px;
+	 	font-size: 12px;
+    	font-weight: bold;
+   	 	font-family:  Arial;
+   	 	color:  #191970;
+   	 	cursor: pointer;
+	
+	}
+	
+	.buttonl:hover 
+	{
+     box-shadow: 0 6px 6px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	}
 	
 	
 	.button
@@ -109,6 +126,7 @@
      font-weight: bold;
    	 font-family:  Arial;
    	 color:  #191970;
+   	 cursor: pointer;
  	}
  	
 	.button:hover 

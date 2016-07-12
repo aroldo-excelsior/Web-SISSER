@@ -37,7 +37,7 @@ namespace SISSE_GUI
 		protected	Button		submit,Autorizar;
 		protected	TextBox		nrProposta;
 		protected  GridView 	GridView1;
-		protected Label CdPropostaSISSER,information,lblErro;
+		protected Label CdPropostaSISSER,information,lblErro,labelCdSisser;
 		protected List<ObjectEventLog> coll;
 		protected Facade f = Facade.Instance;
 		protected LinkButton li1,li2;
@@ -73,16 +73,29 @@ namespace SISSE_GUI
 		private void Page_Load(object sender, EventArgs e)
 		{
 			
+			
+			
 			if(IsPostBack)
 			{
 				
+			}else{
+				String prop = Request.QueryString["prop"];
+			
+				if(prop != null){
+				
+				nrProposta.Text = prop;
+				Bindgridview();
+				
 			}
+			
+				
+				}
 			
 		}
 
 		 private void Bindgridview()
 		 {
-		 
+		 	
 		 	coll = Controle.Getinstance().ResgatarEventLogs(nrProposta.Text);
 		 	
 			
@@ -94,7 +107,7 @@ namespace SISSE_GUI
 		 		idApoliceSession = coll[0].IDApolice;
 		 		GridView1.DataSource = coll;
 		 	
-		 		
+		 		labelCdSisser.Visible = true;
 		 		GridView1.DataBind();
 		 		
 		 		
@@ -161,8 +174,8 @@ namespace SISSE_GUI
 			
 		
 			if(nrProposta.Text != ""){
-		 		if(isNumber(nrProposta.Text))
-					Bindgridview();
+				if(isNumber(nrProposta.Text))
+		 			Bindgridview();
 				else{
 		 			nrProposta.BorderColor = Color.Red;
 		 			information.Text = "Proposta não contem letras.";

@@ -20,7 +20,7 @@
 					<asp:Button id="submit" Text="Pesquisar" class="button" runat="server" />
 				</h3>
 		
-				<h3 ALIGN="center">Codigo Proposta SISSER: 
+				<h3 ALIGN="center"><asp:Label id="labelCdSisser" Text="Codigo Proposta SISSER: " Visible="False" runat="server"/>
 					<asp:Label ID="CdPropostaSISSER" runat="server" Text=""></asp:Label>
 					<asp:Button id="Autorizar" Text="Autorizar Envio" Visible="false" class="button" runat="server" />
 					<input type="hidden" id="ID" value="" />
@@ -74,7 +74,7 @@
                 			<asp:TemplateField HeaderText="Dados Enviados" >
                     			<ItemTemplate>
                     			
-                    				<asp:Button id="Dados" Text="Exibir" class="button"  onclientclick='<%# string.Format("window.open(\"xmls.aspx?id={0}&comando={1}\");", Eval("id"),"dados")%>'   runat="server" />
+                    				<asp:Button id="Dados" Text="Exibir" class="button"  onclientclick='<%# string.Format("window.open(\"xmls.aspx?id={0}&comando={1}\");", Eval("id"),"dados")%>'  runat="server" />
                     			
                     			</ItemTemplate>
                 			</asp:TemplateField>
