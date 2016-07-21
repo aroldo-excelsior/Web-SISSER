@@ -38,19 +38,17 @@
 		<form runat="server">
         	<div id="geral" runat="server" >
 
-            	<div id="cabecalho" background="res\background.jpg">
+            	<div id="cabecalho" align="center" background="res\background.jpg">
             	
             	<img  src="res\\excelsior.jpg" class="alignleft" width="205" height="70">
             	
-            	<a class="Title" href="Default.aspx">
-            	 	SISSER
-            	</a>
+            	<a class="Title" href="Default.aspx">SISSER</a>
             	
             	</div>
 				<div id="menu" runat="server" >
 					<ul id="nav"  >
 						<asp:LinkButton ID="li1" runat="server">Consultar Limite</asp:LinkButton>
-						<asp:LinkButton ID="li3" runat="server">Listar Proposta</asp:LinkButton>	
+						<asp:LinkButton ID="li3" runat="server">Listar Propostas</asp:LinkButton>	
 						<asp:LinkButton ID="li2" runat="server">Pesquisar Proposta</asp:LinkButton>					
 					</ul>
 				</div>
@@ -65,7 +63,7 @@
 
             	<div id="rodape">
 					
-               		<footer> Version 1.1.0 - 2016 by Cia Excelsior de Seguros Development Team.&ensp;</footer>
+               		<footer> Version 1.2.5 - 2016 by Cia Excelsior de Seguros Development Team.&ensp;</footer>
 
             	</div>
        		 </div>

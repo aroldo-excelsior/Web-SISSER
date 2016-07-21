@@ -43,15 +43,13 @@ namespace SISSE_GUI
 		protected LinkButton li1,li2;
 		
 		
-		public int idApoliceSession 
-		{ get{
-				return (int)Session["idApoliceAutorizacao"];
-			} 
+		public int idApoliceSession { 
 			
-			set
-			{
-				Session["idApoliceAutorizacao"] = value;
-			}
+			get{return (int)Session["idApoliceAutorizacao"];}
+			
+			set{Session["idApoliceAutorizacao"] = value;}
+			
+			
 		}
 		
 	
@@ -82,14 +80,10 @@ namespace SISSE_GUI
 				String prop = Request.QueryString["prop"];
 			
 				if(prop != null){
-				
 				nrProposta.Text = prop;
 				Bindgridview();
-				
-			}
-			
-				
 				}
+			}
 			
 		}
 
@@ -162,6 +156,7 @@ namespace SISSE_GUI
 		 	
 		 	f.AutorizarEnvioProposta(id,User);
 		 	information.Text = "Enviada";
+		 	Response.Redirect("PProposta.aspx?prop="+nrProposta.Text);
 		 	
 		 }
 		 
@@ -201,13 +196,9 @@ namespace SISSE_GUI
 			base.OnInit(e);
 		}
 		
-	
-		
-		
-		
-		
 		private void InitializeComponent()
 		{
+			
 			this.Load	+= new System.EventHandler(Page_Load);
 			this.Init   += new System.EventHandler(PageInit);
 			this.Unload += new System.EventHandler(PageExit);

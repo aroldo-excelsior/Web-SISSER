@@ -52,24 +52,20 @@ namespace SISSE_GUI
 		
 		private void SetCSSMenu(){
 			
-			if(HttpContext.Current.Request.Url.ToString().ToUpper().Contains("DESEN")){
-			
-				if(Session["page"].Equals("CLimite"))
-					li1.CssClass = "current_page_item";
-				else if(Session["page"].Equals("LProposta"))
-					li3.CssClass = "current_page_item";
+			if(HttpContext.Current.Request.Url.ToString().ToUpper().Contains("CLIMITE")){
 				
+				//HttpContext.Current.Request.Url.ToString().ToUpper().Contains("CLIMITE")
+				//Session["page"] == "CLimite"
+				li1.CssClass = "current_page_item";
 				
 			}else if(HttpContext.Current.Request.Url.ToString().ToUpper().Contains("PPROPOSTA")){
 				
 				li2.CssClass = "current_page_item";
 				
-			}//else if(HttpContext.Current.Request.Url.ToString().ToUpper().Contains("DESEN")){
+			}else if(HttpContext.Current.Request.Url.ToString().ToUpper().Contains("LPROPOSTA")){
 				
-			//	li3.CssClass = "current_page_item";
-			
-				
-		//	}
+				li3.CssClass = "current_page_item";
+			}
 			
 			
 		}
@@ -96,9 +92,9 @@ namespace SISSE_GUI
 		{
 			//li1.CssClass = "current_page_item";
 			//li2.CssClass = "";
-			//Response.Redirect("CLimite.aspx");
-			Session["page"] = "CLimite";
 			Response.Redirect("CLimite.aspx");
+			//Session["page"] = "CLimite";
+			//Response.Redirect("desen.aspx");
 			
 			
 		}

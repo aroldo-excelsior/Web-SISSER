@@ -36,7 +36,7 @@
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
     <Reference Include="SISSERCore">
-      <HintPath>E:\SISSERCore.dll</HintPath>
+      <HintPath>..\..\..\..\Downloads\15072016\15072016\SISSERCore.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="404.aspx" />
     <None Include="CLimite.aspx" />
     <None Include="Default.aspx" />
     <None Include="desen.aspx" />
@@ -64,9 +65,11 @@
     <None Include="MasterPage.css" />
     <None Include="PaginaMestreGG.master" />
     <None Include="PProposta.aspx" />
+    <None Include="res\404.jpg" />
     <None Include="res\arrow.png" />
     <None Include="res\arrow2.png" />
     <None Include="res\background.jpg" />
+    <None Include="res\cb.jpg" />
     <None Include="res\desen.jpg" />
     <None Include="res\Excelsior.jpg" />
     <None Include="res\vet.png" />
@@ -77,6 +80,10 @@
     <None Include="xmls.aspx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="404.aspx.cs">
+      <DependentUpon>404.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AppConfiguration.cs" />
     <Compile Include="AssemblyInfo.cs" />
     <Compile Include="CLimite.aspx.cs">
       <DependentUpon>CLimite.aspx</DependentUpon>
@@ -110,6 +117,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Mock" />
+    <Folder Include="logs" />
     <Folder Include="scripts" />
     <Folder Include="res" />
   </ItemGroup>

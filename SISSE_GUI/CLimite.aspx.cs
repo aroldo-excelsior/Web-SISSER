@@ -77,7 +77,17 @@ namespace SISSE_GUI
 		{
 		
 		}
-
+		
+		
+		 private void LimparGrid(){
+		 
+		 	Gridview1.DataSource = null;
+		 	Gridview1.DataBind();
+		 	
+		 	Gridview2.DataSource = null;
+		 	Gridview2.DataBind();
+		 	
+		 }
 		protected void Changed_Input_Name(object sender, System.EventArgs e)
 		{
 			
@@ -93,9 +103,50 @@ namespace SISSE_GUI
 		}
 		
 		
+		public void ChamarZe(String cpfcnpj){
+		
+					Facade f = Facade.Instance;
+					//String login = @"EXCELSIOR\aroldo.andrade";
+					String login = Request.ServerVariables["AUTH_USER"];
+					int ano = int.Parse(DropList.SelectedItem.Value);
+					
+					//information.Text = SoNumerosCPF(CPF.Text);
+					//information.Text+= " Ano: "+ ano;
+					
+					try{
+					List<Segurado> segurados = f.ConsultarLimiteFinanceiroSegurado(cpfcnpj,ano,login);
+					
+					
+					//information.Text += SoNumerosCPF(CPF.Text);
+					//information.Text += " Ano: "+ ano;
+					//information.Text += login;
+					
+					
+					if(segurados.Count == 0){
+						information.Text = " Não a Segurados para esse Documento";
+						information.Visible = true;
+					}else{
+						
+						BindGridview(segurados);
+						
+					}
+				
+					}catch(InvalidOperationException e){
+						
+						Controle.Getinstance().writeLog(e.StackTrace);
+						
+						Response.Redirect("404.aspx");
+						
+						
+					}
+		
+			
+		}
+		
 		
 		protected void Submit_Click(object sender, System.EventArgs e){
 		
+			LimparGrid();
 			if(CPF.Text == ""){
 				information.Text = "Campo nulo";
 				information.ForeColor = Color.Red;
@@ -116,44 +167,14 @@ namespace SISSE_GUI
 				
 				if(CPF.Text.Length == 14){
 					
-					
-					//information.Text = SoNumerosCPF(CPF.Text);
-					
-					FacadeMock f = FacadeMock.Instance;
-					String Login = "EXCELSIOR\aroldo.andrade"; //Request.ServerVariables["AUTH_USER"];
-					int ano = int.Parse(DropList.Text);
-					
-					List<Segurado> segurados = f.ConsultarLimiteFinanceiroSegurado(SoNumerosCPF(CPF.Text),ano,Login);
-					
-					if(segurados.Count == 0){
-						information.Text = "Não a Segurados para esse CPF";
-						information.Visible = true;
-					}else{
-						information.Visible = false;
-						BindGridview(segurados);
-						
-					}
-					
-					
+					ChamarZe(SoNumerosCPF(CPF.Text));
+				
 				}
 				
 				if(CPF.Text.Length == 18){
 					
-					//information.Text = SoNumerosCNPJ(CPF.Text);
 					
-					FacadeMock f = FacadeMock.Instance;
-					String Login = "EXCELSIOR\aroldo.andrade";
-					
-					List<Segurado> segurados = f.ConsultarLimiteFinanceiroSegurado(SoNumerosCNPJ(CPF.Text),2016,Login);
-					
-					if(segurados.Count == 0){
-						information.Text = "Não a Segurados para esse CNPJ";
-						information.Visible = true;
-					}else{
-						information.Visible = false;
-						BindGridview(segurados);
-						
-					}
+					ChamarZe(SoNumerosCNPJ(CPF.Text));
 					
 				}
 				
@@ -163,6 +184,8 @@ namespace SISSE_GUI
 		}
 		
 		protected void BindGridview(List<Segurado> segurados){
+				information.Text = " ";
+				information.Visible = false;
 				Gridview1.DataSource = segurados;
 				Gridview2.DataSource = segurados[0].LimiteFinanceiro.Modalidades;
 				Gridview2.DataBind();
@@ -187,22 +210,17 @@ namespace SISSE_GUI
 				b.Text = "+";
 				
 			}
-			
-			
-			
-			
-			
 		}
 		
 		protected String SoNumerosCPF(String CPF){
-			String str ="CPF: "+ CPF.Substring(0,3)+CPF.Substring(4,3)+CPF.Substring(8,3)+CPF.Substring(12,2);
+			String str =CPF.Substring(0,3)+CPF.Substring(4,3)+CPF.Substring(8,3)+CPF.Substring(12,2);
 			
 			
 			return str;
 		
 		}
 		protected String SoNumerosCNPJ(String CNPJ){
-			String str ="CNPJ: "+ CNPJ.Substring(0,2)+CNPJ.Substring(3,3)+CNPJ.Substring(7,3)+CNPJ.Substring(11,4)+CNPJ.Substring(16,2);
+			String str =CNPJ.Substring(0,2)+CNPJ.Substring(3,3)+CNPJ.Substring(7,3)+CNPJ.Substring(11,4)+CNPJ.Substring(16,2);
 			
 			
 			return str;
@@ -212,17 +230,13 @@ namespace SISSE_GUI
 		
 		
 		
-		protected void GridView1_RowCommand(object sender, GridViewCommandEventArgs e){
-		
-			
-			
-		}
 		
 		protected void CheckBox1_CheckedChanged(object sender, System.EventArgs e){
 		
 			if(CheckBox1.Checked){
 			CheckBox2.Checked = false;
 			information.Visible = false;
+			LimparGrid();
 			CPF.Text = "";
 			CPFCNPJ.Text = "CPF:";
 			CPF.Attributes.Add("onkeyup","formataCPF(this,event)");
@@ -235,6 +249,7 @@ namespace SISSE_GUI
 			if(CheckBox2.Checked){
 			CheckBox1.Checked = false;
 			information.Visible = false;
+			LimparGrid();
 			CPF.Text = "";
 			CPFCNPJ.Text = "CNPJ:";
 			CPF.Attributes.Add("onkeyup","formataCNPJ(this,event)");
@@ -250,13 +265,20 @@ namespace SISSE_GUI
 		
 		protected void PopulaDropDown(){
 		
-			List<string> anos = new List<string>();
+			//List<string> anos = new List<string>();
 			
-			anos.Add(DateTime.Now.Year.ToString());
-			anos.Add(((DateTime.Now.Year)-1).ToString());
+			//anos.Add(DateTime.Now.Year.ToString());
+			//anos.Add(((DateTime.Now.Year)-1).ToString());
+			//
+			//DropList.add(DateTime.Now.Year.ToString(),DateTime.Now.Year.ToString());
 			
-			DropList.DataSource = anos;
-			DropList.DataBind();
+			
+			
+			DropList.Items.Insert(0,DateTime.Now.Year.ToString());
+			DropList.Items.Insert(1,((DateTime.Now.Year)-1).ToString());
+			
+			//DropList.DataSource = anos;
+			//DropList.DataBind();
 			
 		}
 		

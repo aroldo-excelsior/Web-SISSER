@@ -7,6 +7,7 @@
  */
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace SISSE_GUI
 {
@@ -28,9 +29,9 @@ namespace SISSE_GUI
 			
 		}
 		
-		public List<ObjectProposta> ResgatarPropostas(){
+		public List<ObjectProposta> ResgatarPropostas(String order){
 			
-			return Repositorio.GetInstance().ResgatarPropostas();
+			return Repositorio.GetInstance().ResgatarPropostas(order);
 		
 		}
 		
@@ -48,6 +49,30 @@ namespace SISSE_GUI
 			return coll;
 		
 		}
+		
+		public void writeLog(string error){
+		
+			try{
+			
+			if(!Directory.Exists("c:/logsSISSER/")){
+				Directory.CreateDirectory("c:/logsSISSER/");	
+			}
+			
+			
+			List<string> errors = new List<string>();
+			errors.Add(error + " - "+ DateTime.Now);
+			errors.Add(" -------------------------------------------------------------------- ");
+			errors.Add(" -------------------------------------------------------------------- ");
+			String[] array = errors.ToArray();
+			if(System.IO.File.Exists("c:/logsSISSER/log.txt"))
+				System.IO.File.AppendAllLines("c:/logsSISSER/log.txt",array);
+			else
+				System.IO.File.WriteAllLines("c:/logsSISSER/log.txt",array);
+			
+			
+			}catch(Exception e){}
+				
+			}
 		
 		private Controle()
 		{

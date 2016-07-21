@@ -48,6 +48,12 @@
 									<asp:Label id="nrCPFCNPJSegurado" Text='<%# Eval("NrCPFCNPJSegurado")%>' runat="server"/>
 								</ItemTemplate>
 							</asp:TemplateField>
+							
+							<asp:TemplateField HeaderText="Ano">
+								<ItemTemplate>
+									<asp:Label id="nrCPFCNPJSegurado" Text='<%# Eval("LimiteFinanceiro.AnoPeriodoExercicio")%>' runat="server"/>
+								</ItemTemplate>
+							</asp:TemplateField>
 						
 						</Columns>
 					</asp:Gridview>
@@ -69,13 +75,13 @@
 					
 							<asp:TemplateField HeaderText="Saldo Comprometido">
 								<ItemTemplate>
-									<asp:Label id="saldoCom" Text='<%# String.Format("{0:C}", Convert.ToDecimal(Eval("VlSaldoComprometido"))/100) %>' runat="server"/>
+									<asp:Label id="saldoCom" Text='<%# String.Format("{0:C}", Eval("VlSaldoComprometido")) %>' runat="server"/>
 								</ItemTemplate>
 							</asp:TemplateField>
 						
 							<asp:TemplateField HeaderText="Saldo Disponivel">
 								<ItemTemplate>
-									<asp:Label id="saldoDis" Text='<%# String.Format("{0:C}", Convert.ToDecimal(Eval("VlSaldoDisponivel"))/100) %>' runat="server"/>
+									<asp:Label id="saldoDis" Text='<%# String.Format("{0:C}", Eval("VlSaldoDisponivel")) %>' runat="server"/>
 								</ItemTemplate>
 							</asp:TemplateField>
 						</Columns>

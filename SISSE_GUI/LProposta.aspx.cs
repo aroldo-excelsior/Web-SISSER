@@ -28,7 +28,7 @@ namespace SISSE_GUI
 		
 		protected GridView GridView1;
 		protected Button autorizar;
-		protected Label cdProSISSER,autorizarLbl;
+		protected Label cdProSISSER,autorizarLbl,information;
 		private Facade f = Facade.Instance;
 		
 
@@ -46,14 +46,16 @@ namespace SISSE_GUI
 			
 			if(IsPostBack)
 			{
+			
+				
 			}
 			
 		}
 		
 		
-		protected void Bindgridview(){
+		protected void Bindgridview(String order){
 		
-			List<ObjectProposta> coll = Controle.Getinstance().ResgatarPropostas();
+			List<ObjectProposta> coll = Controle.Getinstance().ResgatarPropostas(order);
 			
 			GridView1.DataSource = coll;
 			GridView1.PageSize = 15;
@@ -66,20 +68,52 @@ namespace SISSE_GUI
 				autorizarLbl = (Label) rc[i].Cells[6].FindControl("autorizarLbl");
 				
 				
-				if((coll[i].cdPropostaSISSER.Equals("0")) && (coll[i].autorizacao_usuario == 0)){
+				if((coll[i].cdPropostaSISSER.Equals("Não Apresenta")) && (coll[i].autorizacao_usuario == 0)){
 					
 					autorizar.Visible = true;
+					autorizarLbl.Visible = false;
 					
 				}else{
 				   	autorizar.Visible = false;
 				   	autorizarLbl.Visible = true;
 				   	autorizarLbl.ForeColor = Color.Green;
 				}
+			}
+			
+			
+			if(coll.Count != 0)
+				information.Visible = false;
+			else{
+			
+				information.Visible = true;
+				information.ForeColor = Color.Red;
+				information.Text = "Não há propostas eleitas para esta lista";
 				
-		 					
-		 		}
+			}
 			
 			
+		}
+		
+		
+			
+		protected void GridSort(object sender, GridViewSortEventArgs e)
+		{
+			if(Session["order"]== null){
+				Session["order"] = "ASC";
+				Bindgridview("ASC");
+				
+			}else if(Session["order"].Equals("ASC")) {
+				
+				Session["order"] = "DESC";
+				Bindgridview("DESC");
+				
+			}else{
+			
+				Session["order"] = "ASC";
+				Bindgridview("ASC");
+				
+			}
+		
 		}
 		
 		
@@ -92,10 +126,11 @@ namespace SISSE_GUI
 				int id = int.Parse(aut.CommandArgument.ToString());
 				String User = Request.ServerVariables["AUTH_USER"];
 				
-				Response.Write(aut.CommandArgument.ToString());
+				//Response.Write(aut.CommandArgument.ToString());
 				
 				
-				//f.AutorizarEnvioProposta(id,User);
+				f.AutorizarEnvioProposta(id,User);
+				Response.Redirect("Lproposta.aspx");
 			
 		}
 		
@@ -113,9 +148,10 @@ namespace SISSE_GUI
 		
 
 		protected override void OnInit(EventArgs e)
-		{	InitializeComponent();
+		{	
+			InitializeComponent();
 			base.OnInit(e);
-			Bindgridview();
+			Bindgridview("DESC");
 		}
 		
 		private void InitializeComponent()

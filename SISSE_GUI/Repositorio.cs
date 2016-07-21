@@ -22,6 +22,8 @@ namespace SISSE_GUI
 	public class Repositorio : IAcessForConsultation
 	{
 		
+		AppConfiguration appConf = new AppConfiguration();
+		
 		private static Repositorio instance;
 		
 		public static Repositorio GetInstance(){
@@ -36,11 +38,11 @@ namespace SISSE_GUI
 			} 
 		}
 		
-		public List<ObjectProposta> ResgatarPropostas(){
+		public List<ObjectProposta> ResgatarPropostas(String order){
 		
 			List<ObjectProposta> coll = new List<ObjectProposta>();
 			
-			string connString = ConfigurationManager.ConnectionStrings["SISSER_CON"].ConnectionString;        
+			string connString = appConf.getStrDataBase();
         		SqlConnection conn = new SqlConnection(connString);
         		conn.Open();
         		string sql ="select "+
@@ -51,13 +53,13 @@ namespace SISSE_GUI
         						"eap.nrCpfCnpjSegurado as [CPF/CNPJ],"+
         						"eap.autorizacao_usuario as [Autorização Usuario], "+
         						"CASE WHEN eps.cdPropostaSISSER = 0 THEN 'Não Apresenta'  "+ 
-	                            "WHEN eps.cdPropostaSISSER != 0 THEN eps.cdPropostaSISSER "+
+	                            "WHEN eps.cdPropostaSISSER != 0 THEN CONVERT(VARCHAR,eps.cdPropostaSISSER) "+
 								"END "+
 							"from "+
         						"EXCD_Apolice as eap "+
         					"inner join "+
 								"EXCD_ProgramaSubvencao_Apolice as eps on eap.id = eps.id_apolice "+
-        					"order by eap.dt_proposta desc";
+        					"order by eap.dt_proposta "+order;
 							
         		SqlCommand adapt = new SqlCommand(sql, conn);
         
@@ -95,7 +97,7 @@ namespace SISSE_GUI
 		
 			ObjectEventLog u = new ObjectEventLog();
 			if(IDeventlog != null){
-        		string connString = ConfigurationManager.ConnectionStrings["SISSER_CON"].ConnectionString;        
+        		string connString = appConf.getStrDataBase();        
         		SqlConnection conn = new SqlConnection(connString);
         		conn.Open();
         		string sql ="select "+
@@ -136,7 +138,7 @@ namespace SISSE_GUI
         	List<ObjectEventLog> coll = new List<ObjectEventLog>();
         	int contador = 1;
         	if(nrProposta != null){
-        		string connString = ConfigurationManager.ConnectionStrings["SISSER_CON"].ConnectionString;        
+        		string connString = appConf.getStrDataBase();        
         		SqlConnection conn = new SqlConnection(connString);
         		conn.Open();
         		string sql ="select "+ 
@@ -156,7 +158,7 @@ namespace SISSE_GUI
 								"EXCD_EventType as eet on ee.id_EventType = eet.id "+
 							"inner join "+
 								"EXCD_Apolice as ap on ee.id_Apolice = ap.id "+
-        					"left join "+
+        					"inner join "+
         						"EXCD_ProgramaSubvencao_Apolice as pap on pap.id_apolice = ap.id "+
 							"where "+
         						"ap.nrProposta = "+nrProposta;

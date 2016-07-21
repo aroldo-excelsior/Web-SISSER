@@ -161,7 +161,8 @@
 	{
 	
 	
-	margin-left: 25%;
+	/*margin-left: 25%;*/
+	padding-right: 220px;
     color: #191970;
 	text-shadow: 2px 2px 2px #cccccc, 2px 2px 2px #191970, 2px 2px 2px #cccccc;
 	text-decoration:none;
