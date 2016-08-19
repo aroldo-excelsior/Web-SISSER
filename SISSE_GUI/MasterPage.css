@@ -1,28 +1,7 @@
 
-	#menu
-	{
-		background: #ccc ;
-		border-bottom: 3px solid #191970;
-		border-top: 3px solid #191970;
-		line-height: 50px;
-	}
+
 	
-	#menu ul
-	{
-		
-		text-align: center;
-		margin: 0;
-		padding: 0px,0px,0px,0px;
-		
-	}
-	
-	#menu input
-	{
-	 
-	  padding-bottom: 3px;	
-	}
-	
-	#itens
+	#itens  /* CLimite.aspx */
 	{
 	
 		font-weight: bold;
@@ -30,7 +9,7 @@
 	}
 	
     
-	#itens p
+	#itens p  /* CLimite.aspx */
 	{
 	
 	 margin: 0 auto;
@@ -41,12 +20,24 @@
 	 
 	}
 	
+	.lUser
+	{
+	
+	align: left;
+	position: absolute;
+	left: 75%;
+	top: 2px;
+	color: #191970;
+	white-space: nowrap;
+	
+	}
 	
 	.rectangle 
 	{
 	
  	 width: 290px;
   	 height: 25px;
+  	 
  	 border-bottom: 2px solid #ccc;
  	 border-right: 2px solid #ccc;
  	 border-left: 2px solid #ccc;
@@ -57,25 +48,35 @@
  	 
 	}
 	
-	.input
+	.rectangleListarProp
 	{
-	 
 	
-	padding-left: 30px;
-	padding-right: 30px;
-	line-height: 30px;
+ 	 width: 500px;
+  	 height: 30px;
+  	 padding-top: 7px;
+ 	 border-bottom: 2px solid #ccc;
+ 	 border-right: 2px solid #ccc;
+ 	 border-left: 2px solid #ccc;
+ 	 border-top: 2px solid #ccc;
+ 	 margin: 0;
+ 	 text-align: center;
+ 	 
 	}
 	
 	
-	#menu ul  a
+	#menu {
+		background: #ccc;
+		border-bottom: 3px solid #191970;
+		border-top: 3px solid #191970;
+    	line-height: 50px;
+	}
+	
+	#menu a
 	{
-		
-		display: inline;
-		padding-left: 100px;
-		padding-right: 100px;
+		padding-left: 80px;
+		padding-right: 80px;
 		padding-bottom: 18px;
 		padding-top: 18px;
-		letter-spacing: 1px;
 		text-decoration: none;
 		text-transform: uppercase;
 		font-family: "Times New Roman", Times, serif;
@@ -84,12 +85,10 @@
 		color: #191970;
 		white-space: nowrap;
 		
-		
 	}
-	
 	#menu .current_page_item
 	{
-		background: #191970;
+		background-color: #191970;
 		color: #FFF;
 	}
 	
@@ -98,6 +97,7 @@
 		text-decoration: none;
 		color: #FFF;
 	}
+	
 	
 	/* CONFIGURACOES GERAL */
 	
@@ -120,7 +120,30 @@
 	}
 	
 	
-	.button
+	.buttont
+	{
+	
+		
+	 	font-size: 12px;
+    	font-weight: bold;
+   	 	font-family:  Arial;
+   	 	color:  #191970;
+   	 	cursor: auto;
+	
+	}
+	
+	
+	
+	.buttont:hover 
+	{
+     box-shadow: 0 6px 6px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+	}
+	
+	
+	
+	
+	
+	.button 
 	{
      font-size: 12px;
      font-weight: bold;
@@ -139,9 +162,10 @@
 
 	{
 	
-    border: 3px solid #191970;
-    margin: 1px auto;
-    width: 100%;
+    	border: 3px solid #191970;
+    	margin: 1px auto;
+    	width: 100%;
+    
 	}
 
 	/* CABECALHO */
@@ -160,13 +184,14 @@
 	#cabecalho .Title
 	{
 	
-	
 	/*margin-left: 25%;*/
 	padding-right: 220px;
     color: #191970;
 	text-shadow: 2px 2px 2px #cccccc, 2px 2px 2px #191970, 2px 2px 2px #cccccc;
 	text-decoration:none;
-	font: 60px Cambria;
+	font: 50px Cambria;
+	white-space: nowrap;
+	
 	
 	}
 

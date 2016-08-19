@@ -8,6 +8,7 @@
 	EnableSessionState = "true"
 %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
 	<div class="geral">
 		<div id="itens" align="center">	
@@ -21,6 +22,8 @@
 			<asp:TextBox id="CPF" onkeypress="return PermiteSomenteNumeros(event);" runat="server"></asp:TextBox>
 			<asp:Label id="ano" Text="Ano: " runat="server"/> <asp:DropDownList id="DropList" runat="Server"/></br>	  
 			</br><asp:Button id="submit" Text="Cosultar" class="buttonl" runat="server" />
+			
+			
 			
 			<h5 ALIGN="center">
 				<asp:Label ID="information" runat="server" Text=""></asp:Label>

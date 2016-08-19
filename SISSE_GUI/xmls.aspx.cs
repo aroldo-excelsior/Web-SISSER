@@ -66,8 +66,7 @@ namespace SISSE_GUI
     			 Response.Write(Controle.Getinstance().ResgatarArgsStackTraceEventLogs(id).Stack_Trace);
     			 Response.Flush();
     			 Response.End();
-				
-				
+    			 
 			}
 			
 			

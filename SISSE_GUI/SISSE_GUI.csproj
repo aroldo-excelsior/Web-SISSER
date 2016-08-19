@@ -61,6 +61,7 @@
     <None Include="CLimite.aspx" />
     <None Include="Default.aspx" />
     <None Include="desen.aspx" />
+    <None Include="Login.aspx" />
     <None Include="LProposta.aspx" />
     <None Include="MasterPage.css" />
     <None Include="PaginaMestreGG.master" />
@@ -96,6 +97,9 @@
       <DependentUpon>desen.aspx</DependentUpon>
     </Compile>
     <Compile Include="IGetLimites.cs" />
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="LProposta.aspx.cs">
       <DependentUpon>LProposta.aspx</DependentUpon>
     </Compile>

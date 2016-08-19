@@ -16,6 +16,18 @@
 	font-size: 16px;
 }
 
+.pager
+{
+
+	background-color: #646464;
+	font-family: Arial;
+	color: White;
+	height: 25px;
+	text-align: center;
+	font-size: 16px;
+}
+
+
 
 .rows
 {

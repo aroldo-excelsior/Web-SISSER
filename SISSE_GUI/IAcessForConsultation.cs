@@ -16,6 +16,7 @@ namespace SISSE_GUI
 		
 		
 	List<ObjectEventLog> ResgatarEventLogs(string nrProposta);
+
 		
 	}
 }

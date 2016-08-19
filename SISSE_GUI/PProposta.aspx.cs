@@ -34,13 +34,14 @@ namespace SISSE_GUI
 	{	
 		
 
-		protected	Button		submit,Autorizar;
+		protected	Button		submit,Autorizar,dados;
 		protected	TextBox		nrProposta;
 		protected  GridView 	GridView1;
-		protected Label CdPropostaSISSER,information,lblErro,labelCdSisser;
+		protected Label CdPropostaSISSER,information,lblErro,labelCdSisser,lblDados;
 		protected List<ObjectEventLog> coll;
 		protected Facade f = Facade.Instance;
 		protected LinkButton li1,li2;
+		
 		
 		
 		public int idApoliceSession { 
@@ -108,19 +109,21 @@ namespace SISSE_GUI
 		 		
 		 		GridViewRowCollection rc = GridView1.Rows;
 		 		
-		 		
-		 		
 		 		for(int i=0; i<rc.Count;i++){
-		 		
+		 			
+		 			if((dados = (Button) rc[i].Cells[6].FindControl("Dados")).CommandArgument.Equals("Não Apresenta")){
+		 			
+		 				dados.Visible = false;
+		 				
+		 			};
+		 			
+		 			
 		 			if((lblErro = (Label) rc[i].Cells[4].FindControl("lblErro")).Text.Equals("Não Apresenta")){
 		 			
-		 				lblErro.ForeColor = Color.Green; 
-		 			
+		 				lblErro.ForeColor = Color.Green;
 		 			}
 		 			else{ 
-		 				
-		 				lblErro.ForeColor = Color.Red; 
-		 				
+		 				lblErro.ForeColor = Color.Red;
 		 			}
 		 					
 		 		}

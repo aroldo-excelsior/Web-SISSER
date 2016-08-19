@@ -29,9 +29,9 @@ namespace SISSE_GUI
 			
 		}
 		
-		public List<ObjectProposta> ResgatarPropostas(String order){
+		public List<ObjectProposta> ResgatarPropostas(String order,String DataIni, String DataFin){
 			
-			return Repositorio.GetInstance().ResgatarPropostas(order);
+			return Repositorio.GetInstance().ResgatarPropostas(order, DataIni,  DataFin);
 		
 		}
 		

@@ -38,9 +38,11 @@ namespace SISSE_GUI
 			} 
 		}
 		
-		public List<ObjectProposta> ResgatarPropostas(String order){
+		public List<ObjectProposta> ResgatarPropostas(String order,String dataIni, String dataFin){
 		
 			List<ObjectProposta> coll = new List<ObjectProposta>();
+			
+			
 			
 			string connString = appConf.getStrDataBase();
         		SqlConnection conn = new SqlConnection(connString);
@@ -54,12 +56,15 @@ namespace SISSE_GUI
         						"eap.autorizacao_usuario as [Autorização Usuario], "+
         						"CASE WHEN eps.cdPropostaSISSER = 0 THEN 'Não Apresenta'  "+ 
 	                            "WHEN eps.cdPropostaSISSER != 0 THEN CONVERT(VARCHAR,eps.cdPropostaSISSER) "+
-								"END "+
+								"END AS [Codigo SISSER]"+
 							"from "+
         						"EXCD_Apolice as eap "+
         					"inner join "+
 								"EXCD_ProgramaSubvencao_Apolice as eps on eap.id = eps.id_apolice "+
-        					"order by eap.dt_proposta "+order;
+        					"where eap.dt_proposta BETWEEN '"+dataIni+"' and '"+dataFin+
+        					"' order by eap.dt_proposta "+order;
+        		
+        		
 							
         		SqlCommand adapt = new SqlCommand(sql, conn);
         
@@ -106,7 +111,7 @@ namespace SISSE_GUI
 							"from "+
 								"EXCD_Eventlog as ee "+
 							"where "+
-        						"ee.id = "+IDeventlog;
+        			"ee.id = "+IDeventlog +" and ee.id_EventType not in (999,0,11,12,1)";
         
         		SqlCommand adapt = new SqlCommand(sql, conn);
         
@@ -161,7 +166,8 @@ namespace SISSE_GUI
         					"inner join "+
         						"EXCD_ProgramaSubvencao_Apolice as pap on pap.id_apolice = ap.id "+
 							"where "+
-        						"ap.nrProposta = "+nrProposta;
+        						"ap.nrProposta = "+nrProposta+" and "+
+							"ee.id_EventType not in (999,0,11,12,1)";
         
         		SqlCommand adapt = new SqlCommand(sql, conn);
         
@@ -175,7 +181,7 @@ namespace SISSE_GUI
                 	
                 			if(!ler.IsDBNull(0))u.Descricao_Do_Tipo_De_Evento = ler.GetString(0);else u.Descricao_Do_Tipo_De_Evento = "Não Apresenta";
                 			if(!ler.IsDBNull(1))u.Descricao_Do_Evento = ler.GetString(1);else u.Descricao_Do_Evento = "Não Apresenta";
-                			if(!ler.IsDBNull(2))u.Argumento = ler.GetString(2);else u.Argumento = "";
+                			if(!ler.IsDBNull(2))u.Argumento = ler.GetString(2);else u.Argumento = "Não Apresenta";
                 			if(!ler.IsDBNull(3))u.Message_De_Erro = "Apresenta";else u.Message_De_Erro = "Não Apresenta";
                 			if(!ler.IsDBNull(4))u.Stack_Trace = ler.GetString(4);else u.Stack_Trace = "Não Apresenta";
                 			if(!ler.IsDBNull(5))u.Codigo_Proposta_SISSER = ler.GetInt32(5);else u.Codigo_Proposta_SISSER = 0;

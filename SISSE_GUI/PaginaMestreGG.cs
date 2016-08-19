@@ -33,13 +33,23 @@ namespace SISSE_GUI
 	{	
 		
 		protected LinkButton li1,li2,li3;
+		protected Label lUser;
+		
+		public String idUserSession { 
+			
+			get{return (String)Request.ServerVariables["AUTH_USER"];}
+			
+			set{Request.ServerVariables["AUTH_USER"] = value;}
+			
+			
+		}
 		
 		
 		
 		protected void PageInit(object sender, System.EventArgs e)
 		{
 			
-			
+			lUser.Text += idUserSession;
 			
 			
 		}

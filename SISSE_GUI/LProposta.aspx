@@ -13,11 +13,26 @@
 	<asp:Content ID="Content1" ContentPlaceHolderID="ContentPlaceHolder1" runat="Server">
 	
 	
-	
 	<div align="center">
-		<form id="Form1" method="post">
-			
+		<form id="Form1" method="post" >
 		
+			<div class="rectangleListarProp">
+				
+				Data Inicial: <asp:TextBox id="TDataInicial" runat="server" class="buttont"  onkeypress="return PermiteSomenteNumeros(event);" width="80" />
+		
+				&ensp;Data Final: <asp:TextBox id="TDataFinal" runat="server"  class="buttont" onkeypress="return PermiteSomenteNumeros(event);" width="80"  />
+	
+				&ensp;<asp:Button id="listar" runat="server" Text="Listar" onclick="BListar" width="100"/>
+		
+		
+			</div>
+		</br></br>
+		<asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager>
+			<asp:UpdatePanel ID="uplPanel" runat="server">
+				<Triggers>
+                	<asp:AsyncPostBackTrigger ControlID="GridView1" EventName="PageIndexChanging" />
+            	</Triggers>
+				<ContentTemplate>
 					<asp:GridView 
     					ID="GridView1" 
     					AutoGenerateColumns="False"
@@ -37,7 +52,7 @@
                 			<asp:boundfield  datafield="dt_proposta" SortExpression="dt_proposta" ItemStyle-Wrap="false" 
                 				HtmlEncode="false" headertext="Data Proposta <img src='res/cb.jpg' height='14' width='20'> " />
 				
-               				<asp:TemplateField HeaderText="Codigo SISSER" >
+               				<asp:TemplateField HeaderText="Código SISSER" >
                     			<ItemTemplate>
                     			
                     				<asp:Label id="cdProSISSER" Text='<%# Eval("cdPropostaSISSER") %>'  runat="server" />
@@ -74,10 +89,12 @@
             			</Columns>
             			<PagerSettings FirstPageText="<<" LastPageText=">>"
   						Mode="NextPreviousFirstLast" NextPageText=">" PreviousPageText="<" />
-            			
-    		
+  						
 					</asp:GridView>
 					<asp:Label id="information" Text='' Visible="False"  runat="server" />
+    			</ContentTemplate>
+			</asp:UpdatePanel>
+					
 				</form>
 			</div>
 	

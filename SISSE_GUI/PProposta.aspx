@@ -20,7 +20,7 @@
 					<asp:Button id="submit" Text="Pesquisar" class="button" runat="server" />
 				</h3>
 		
-				<h3 ALIGN="center"><asp:Label id="labelCdSisser" Text="Codigo Proposta SISSER: " Visible="False" runat="server"/>
+				<h3 ALIGN="center"><asp:Label id="labelCdSisser" Text="Código Proposta SISSER: " Visible="False" runat="server"/>
 					<asp:Label ID="CdPropostaSISSER" runat="server" Text=""></asp:Label>
 					<asp:Button id="Autorizar" Text="Autorizar Envio" Visible="false" class="button" runat="server" />
 					<input type="hidden" id="ID" value="" />
@@ -49,10 +49,10 @@
                 				headertext="Data do Evento" />
 				
                				<asp:boundfield  datafield="Descricao_Do_Tipo_De_Evento" ItemStyle-Wrap="true" 
-                				headertext="Descrição do Tipo do Evendo" />
+                				headertext="Descrição do Tipo do Evento" />
                 	
                	 			<asp:boundfield  datafield="Descricao_Do_Evento" ItemStyle-Wrap="true"
-                				headertext="Descrição do Evendo"/>
+                				headertext="Descrição do Evento"/>
                 			
                 	
 							<asp:TemplateField HeaderText="Messagem de Erro" >
@@ -63,19 +63,20 @@
                     			</ItemTemplate>
                 			</asp:TemplateField>                			
                 		
-                			<asp:TemplateField HeaderText="Stack Trace">
+                			<asp:TemplateField HeaderText="Retorno">
                     			<ItemTemplate>
                     			
-                    				<asp:Button id="teste" Text="Exibir"  class="button"  onclientclick='<%# string.Format("window.open(\"xmls.aspx?id={0}&comando={1}\");", Eval("id"),"trace")%>'  runat="server" />
-                    			
+                    				<asp:Button id="teste" Text="Exibir"  class="button" CommandArgument='<%# Eval("Stack_Trace") %>'  onclientclick='<%# string.Format("window.open(\"xmls.aspx?id={0}&comando={1}\");", Eval("id"),"trace")%>'  runat="server" />
+                    				
                     			</ItemTemplate>
                 			</asp:TemplateField>
                 		
                 			<asp:TemplateField HeaderText="Dados Enviados" >
                     			<ItemTemplate>
                     			
-                    				<asp:Button id="Dados" Text="Exibir" class="button"  onclientclick='<%# string.Format("window.open(\"xmls.aspx?id={0}&comando={1}\");", Eval("id"),"dados")%>'  runat="server" />
-                    			
+                    				<asp:Button id="Dados" Text="Exibir" CommandArgument='<%# Eval("Argumento") %>' class="button"  onclientclick='<%# string.Format("window.open(\"xmls.aspx?id={0}&comando={1}\");", Eval("id"),"dados")%>'  runat="server" />
+                    				<!--<asp:Label id="lblDados" Text='<%# Eval("Argumento") %>' runat="server" />-->
+                    				
                     			</ItemTemplate>
                 			</asp:TemplateField>
                     

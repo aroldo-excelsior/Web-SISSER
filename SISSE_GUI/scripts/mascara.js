@@ -87,7 +87,10 @@ function formataValor(campo, evt)
  MovimentaCursor(campo, xPos);
 }
 // Formata data no padrão DD/MM/YYYY
-function formataData(campo, evt)
+
+
+
+function formataData(campo, evt, ano)
 {
  var xPos = PosicaoCursor(campo);
  //dd/MM/yyyy
@@ -98,13 +101,74 @@ function formataData(campo, evt)
  vr = campo.value = filtraNumeros(filtraCampo(campo));
  tam = vr.length;
  if (tam >= 2 && tam < 4)
-  campo.value = vr.substr(0, 2) + '/' + vr.substr(2);
- if (tam == 4)
-  campo.value = vr.substr(0, 2) + '/' + vr.substr(2, 2) + '/';
- if (tam > 4)
-  campo.value = vr.substr(0, 2) + '/' + vr.substr(2, 2) + '/' + vr.substr(4);
+  		campo.value = vr.substr(0, 2) + '/' + vr.substr(2);
+  		if (vr.substr(0,2)>31){
+  			campo.style.borderColor = "#FF0000";
+  		}else{
+  			campo.style.borderColor = "#0000FF";
+  		}
+ if (tam == 4 && tam <= 8){
+ 		campo.value = vr.substr(0, 2) + '/' + vr.substr(2, 2) + '/';
+ 		
+ 		if(vr.substr(2,2) > 12){
+ 			campo.style.borderColor = "#FF0000";
+ 		}else{
+ 			campo.style.borderColor = "#0000FF";
+ 			if(vr.substr(0,2)>getLastDayOfMonth(vr.substr(2,2),ano)){
+ 				campo.style.borderColor = "#FF0000"
+ 			}else{
+ 				campo.style.borderColor = "#0000FF";
+ 		}
+ 	}
+ 		
+ }
+ if (tam > 4){
+  	campo.value = vr.substr(0, 2) + '/' + vr.substr(2, 2) + '/' + vr.substr(4,4);
+  	
+  	campo.style.borderColor = "#0000FF";
+ 			if(vr.substr(0,2)>getLastDayOfMonth(vr.substr(2,2),vr.substr(4,4))){
+ 				campo.style.borderColor = "#FF0000"
+ 			}else{
+ 				campo.style.borderColor = "#0000FF";
+  			}
+  	
+ }
+ 
  MovimentaCursor(campo, xPos);
 }
+
+function getLastDayOfMonth(month,year)
+{
+	var day;
+ 
+	switch(month)
+	{
+		case '01' :
+		case '03' :
+		case '05' :
+		case '07' :
+		case '08' :
+		case '10':
+		case '12':
+			day = '31';
+			break;
+		case '04' :
+		case '06' :
+		case '09' :
+		case '11':
+		   	day = '30';
+			break;
+		case '02' :
+			if( ( (year % 4 == 0) && ( year % 100 != 0) ) || (year % 400 == 0) )
+				day = '29';
+			else
+				day = '28';
+			break;
+ 
+	}
+	return day;
+}
+
 //descobre qual a posição do cursor no campo
 function PosicaoCursor(textarea)
 {
@@ -156,6 +220,7 @@ function MovimentaCursor(textarea, pos)
   textarea.selectionEnd = pos;
  }
 }
+
 //Formata data e hora no padrão DD/MM/YYYY HH:MM
 function formataDataeHora(campo, evt)
 {

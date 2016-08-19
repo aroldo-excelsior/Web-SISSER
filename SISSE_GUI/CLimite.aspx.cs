@@ -38,30 +38,39 @@ namespace SISSE_GUI
 		protected GridView Gridview1,Gridview2;
 		protected Literal literal;
 		protected DropDownList DropList;
-		//protected Repeater repGrid;
 		
-		
-		//protected void repGridItemCreated(Object Sender, RepeaterItemEventArgs e){
-		//}
 
 		protected void PageInit(object sender, System.EventArgs e)
 		{
+			
+			
 		}
 		
 		
 		protected void PageExit(object sender, System.EventArgs e)
 		{
+			
+			
 		}
 
 		private void Page_Load(object sender, System.EventArgs e)
 		{
 			
+			
+			
+			// --------------------------------------------------------------------------------------------//
+			// a cada page load verifica se os checkBox estão desmarcados, caso positivo, seta os menus como invisivel
+			// --------------------------------------------------------------------------------------------//
 			if(!CheckBox1.Checked && !CheckBox2.Checked){
 				
 					setVisibleInputs(false);
+					
+					
 				
 				}
-			
+			// --------------------------------------------------------------------------------------------//
+			// a cada PostBack verifica se os checkBox estão desmarcados, caso positivo, seta os menus como invisivel
+			// --------------------------------------------------------------------------------------------//
 			if(IsPostBack)
 			{
 			
@@ -73,13 +82,11 @@ namespace SISSE_GUI
 			}
 		}
 	
-		protected void Click_Button_Ok(object sender, System.EventArgs e)
-		{
 		
-		}
-		
-		
-		 private void LimparGrid(){
+		// --------------------------------------------------------------------------------------------//
+		// limpa os gridviews
+		// --------------------------------------------------------------------------------------------//
+		private void LimparGrid(){
 		 
 		 	Gridview1.DataSource = null;
 		 	Gridview1.DataBind();
@@ -88,11 +95,10 @@ namespace SISSE_GUI
 		 	Gridview2.DataBind();
 		 	
 		 }
-		protected void Changed_Input_Name(object sender, System.EventArgs e)
-		{
-			
-		}
 		
+		// --------------------------------------------------------------------------------------------//
+		// seta os menus para visivel ou invisivel
+		// --------------------------------------------------------------------------------------------//
 		public void setVisibleInputs(Boolean b){
 			
 			submit.Visible = b;
@@ -100,28 +106,34 @@ namespace SISSE_GUI
 			CPF.Visible = b;
 			DropList.Visible = b;
 			ano.Visible = b;
+			
+			
+			
 		}
 		
 		
-		public void ChamarZe(String cpfcnpj){
 		
+		public void Consulta(String cpfcnpj){
+					// --------------------------------------------------------------------------------------------//
+					// inicia um objeto do tipo face que esta na SISSERCORE.dll
+					// --------------------------------------------------------------------------------------------//
 					Facade f = Facade.Instance;
 					//String login = @"EXCELSIOR\aroldo.andrade";
 					String login = Request.ServerVariables["AUTH_USER"];
 					int ano = int.Parse(DropList.SelectedItem.Value);
 					
-					//information.Text = SoNumerosCPF(CPF.Text);
-					//information.Text+= " Ano: "+ ano;
+					
+					// --------------------------------------------------------------------------------------------//
+					// tenta realizar a consulta ultilzando o metodo do objeto facade
+					// --------------------------------------------------------------------------------------------//	
 					
 					try{
 					List<Segurado> segurados = f.ConsultarLimiteFinanceiroSegurado(cpfcnpj,ano,login);
 					
 					
-					//information.Text += SoNumerosCPF(CPF.Text);
-					//information.Text += " Ano: "+ ano;
-					//information.Text += login;
-					
-					
+					// --------------------------------------------------------------------------------------------//
+					// Verifica se a lista esta vazia 
+					// --------------------------------------------------------------------------------------------//
 					if(segurados.Count == 0){
 						information.Text = " Não a Segurados para esse Documento";
 						information.Visible = true;
@@ -131,6 +143,9 @@ namespace SISSE_GUI
 						
 					}
 				
+					// --------------------------------------------------------------------------------------------//
+					// caso der algum erro na consulta grava o erro e redireciona para a pagina de erro
+					// --------------------------------------------------------------------------------------------//
 					}catch(InvalidOperationException e){
 						
 						Controle.Getinstance().writeLog(e.StackTrace);
@@ -143,7 +158,9 @@ namespace SISSE_GUI
 			
 		}
 		
-		
+		// --------------------------------------------------------------------------------------------//
+		// verificações apos o click no botao consultar
+		// --------------------------------------------------------------------------------------------//
 		protected void Submit_Click(object sender, System.EventArgs e){
 		
 			LimparGrid();
@@ -167,14 +184,14 @@ namespace SISSE_GUI
 				
 				if(CPF.Text.Length == 14){
 					
-					ChamarZe(SoNumerosCPF(CPF.Text));
+					Consulta(SoNumerosCPF(CPF.Text));
 				
 				}
 				
 				if(CPF.Text.Length == 18){
 					
 					
-					ChamarZe(SoNumerosCNPJ(CPF.Text));
+					Consulta(SoNumerosCNPJ(CPF.Text));
 					
 				}
 				
@@ -182,7 +199,9 @@ namespace SISSE_GUI
 			}
 			
 		}
-		
+		// --------------------------------------------------------------------------------------------//
+		// inicia os gridviews com a lista informada
+		// --------------------------------------------------------------------------------------------//
 		protected void BindGridview(List<Segurado> segurados){
 				information.Text = " ";
 				information.Visible = false;
@@ -195,7 +214,9 @@ namespace SISSE_GUI
 		}
 		
 		
-		
+		// --------------------------------------------------------------------------------------------//
+		// Metodo que seta visivel a gridview 2
+		// --------------------------------------------------------------------------------------------//
 		protected void Detalhes_Click(object sender, System.EventArgs e){
 		
 			Button b = (Button) sender;
@@ -212,17 +233,25 @@ namespace SISSE_GUI
 			}
 		}
 		
+		// --------------------------------------------------------------------------------------------//
+		// retrona so os numeros da string CPF
+		// --------------------------------------------------------------------------------------------//
+		
 		protected String SoNumerosCPF(String CPF){
+			
 			String str =CPF.Substring(0,3)+CPF.Substring(4,3)+CPF.Substring(8,3)+CPF.Substring(12,2);
 			
-			
 			return str;
 		
 		}
+		
+		// --------------------------------------------------------------------------------------------//
+		// retrona so os numeros da string CNPJ
+		// --------------------------------------------------------------------------------------------//
 		protected String SoNumerosCNPJ(String CNPJ){
+			
 			String str =CNPJ.Substring(0,2)+CNPJ.Substring(3,3)+CNPJ.Substring(7,3)+CNPJ.Substring(11,4)+CNPJ.Substring(16,2);
 			
-			
 			return str;
 			
 		}
@@ -230,7 +259,9 @@ namespace SISSE_GUI
 		
 		
 		
-		
+		// --------------------------------------------------------------------------------------------//
+		// faz o tratamento do checkBox1 
+		// --------------------------------------------------------------------------------------------//
 		protected void CheckBox1_CheckedChanged(object sender, System.EventArgs e){
 		
 			if(CheckBox1.Checked){
@@ -244,6 +275,9 @@ namespace SISSE_GUI
 				
 		}
 		
+		// --------------------------------------------------------------------------------------------//
+		// faz o tratamento do checkBox2
+		// --------------------------------------------------------------------------------------------//
 		protected void CheckBox2_CheckedChanged(object sender, System.EventArgs e){
 		
 			if(CheckBox2.Checked){
@@ -258,27 +292,19 @@ namespace SISSE_GUI
 		}
 
 		protected override void OnInit(EventArgs e)
-		{	InitializeComponent();
-			
+		{	
+			InitializeComponent();
 			base.OnInit(e);
 		}
 		
 		protected void PopulaDropDown(){
 		
-			//List<string> anos = new List<string>();
-			
-			//anos.Add(DateTime.Now.Year.ToString());
-			//anos.Add(((DateTime.Now.Year)-1).ToString());
-			//
-			//DropList.add(DateTime.Now.Year.ToString(),DateTime.Now.Year.ToString());
 			
 			
 			
 			DropList.Items.Insert(0,DateTime.Now.Year.ToString());
 			DropList.Items.Insert(1,((DateTime.Now.Year)-1).ToString());
 			
-			//DropList.DataSource = anos;
-			//DropList.DataBind();
 			
 		}
 		
@@ -289,11 +315,10 @@ namespace SISSE_GUI
 			this.Init   += new System.EventHandler(PageInit);
 			this.Unload += new System.EventHandler(PageExit);
 			CPF.BorderColor = Color.Blue;
-			//.RowCommand += new GridViewCommandEventHandler(GridView1_RowCommand);
 			CheckBox1.CheckedChanged += new System.EventHandler(CheckBox1_CheckedChanged);
 			CheckBox2.CheckedChanged += new System.EventHandler(CheckBox2_CheckedChanged);
+			
 			submit.Click += new System.EventHandler(Submit_Click);
-			//repGrid.ItemDataBound += new RepeaterItemEventHandler(repGridItemCreated);
 			
 			PopulaDropDown();
 			
