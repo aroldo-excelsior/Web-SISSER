@@ -64,6 +64,7 @@
     <None Include="Login.aspx" />
     <None Include="LProposta.aspx" />
     <None Include="MasterPage.css" />
+    <None Include="Menu.css" />
     <None Include="PaginaMestreGG.master" />
     <None Include="PProposta.aspx" />
     <None Include="res\404.jpg" />

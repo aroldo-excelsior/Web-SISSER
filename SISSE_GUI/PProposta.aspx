@@ -15,16 +15,16 @@
 	
 			<form id="Form1" method="post">
 				
-				<H3 ALIGN="center">Proposta:
-					<asp:TextBox id="nrProposta" onkeypress="return PermiteSomenteNumeros(event);" runat="server"></asp:TextBox>
-					<asp:Button id="submit" Text="Pesquisar" class="button" runat="server" />
-				</h3>
+				<H4 ALIGN="center">Proposta:
+					<asp:TextBox id="nrProposta" onkeypress="return PermiteSomenteNumeros(event);" height="23" class="buttont" runat="server"></asp:TextBox>
+					<asp:Button id="submit" Text="Pesquisar" class="buttont" runat="server" />
+				</h4>
 		
-				<h3 ALIGN="center"><asp:Label id="labelCdSisser" Text="Código Proposta SISSER: " Visible="False" runat="server"/>
+				<h4 ALIGN="center"><asp:Label id="labelCdSisser" Text="Código Proposta SISSER: " Visible="False" runat="server"/>
 					<asp:Label ID="CdPropostaSISSER" runat="server" Text=""></asp:Label>
 					<asp:Button id="Autorizar" Text="Autorizar Envio" Visible="false" class="button" runat="server" />
 					<input type="hidden" id="ID" value="" />
-				</h3>
+				</h4>
 			
 				<h5 ALIGN="center">
 					<asp:Label ID="information" runat="server" Text=""></asp:Label>

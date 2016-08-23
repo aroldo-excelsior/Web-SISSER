@@ -22,7 +22,7 @@
 		
 				&ensp;Data Final: <asp:TextBox id="TDataFinal" runat="server"  class="buttont" onkeypress="return PermiteSomenteNumeros(event);" width="80"  />
 	
-				&ensp;<asp:Button id="listar" runat="server" Text="Listar" onclick="BListar" width="100"/>
+				&ensp;<asp:Button id="listar" runat="server" Text="Listar" onclick="BListar" width="100" height="23" class="buttont"/>
 		
 		
 			</div>
